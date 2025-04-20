@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -7,20 +8,47 @@
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
-    ... (code HTML complet ici, déjà vu dans canvas) ...
+    /* styles (déjà présents dans le canvas complet) */
   </style>
-  <script>
-    window.addEventListener('scroll', () => {
-      document.querySelectorAll('.scroll-fade').forEach(el => {
-        const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 100) {
-          el.classList.add('visible');
-        }
-      });
-    });
-  </script>
 </head>
 <body>
-  ... (rest of the code) ...
+  <div id="intro">
+    <img src="https://i.postimg.cc/mDk3hGhb/logo-aba-renovation.png" alt="Logo ABA RENOVATION">
+    <p>Votre acteur local sur la presqu'île guérandaise</p>
+  </div>
+  <header class="scroll-fade">
+    <img src="https://i.postimg.cc/mDk3hGhb/logo-aba-renovation.png" alt="Logo ABA RENOVATION">
+    <h1>ABA RENOVATION</h1>
+    <p>Votre acteur local sur la presqu'île guérandaise</p>
+  </header>
+  <nav class="scroll-fade">
+    <a href="index.html"><i class="fas fa-home"></i>Accueil</a>
+    <a href="apropos.html"><i class="fas fa-users"></i>À propos</a>
+    <a href="services.html"><i class="fas fa-tools"></i>Services</a>
+    <a href="realisations.html"><i class="fas fa-images"></i>Réalisations</a>
+    <a href="contact.html"><i class="fas fa-envelope"></i>Contact</a>
+  </nav>
+  <section class="scroll-fade">
+    <h2>Bienvenue sur le site de ABA RENOVATION</h2>
+    <p>Découvrez nos services, nos réalisations et contactez-nous pour concrétiser vos projets de rénovation.</p>
+    <a href="apropos.html" class="cta-button"><i class="fas fa-users"></i>À propos</a>
+    <a href="services.html" class="cta-button"><i class="fas fa-tools"></i>Services</a>
+    <a href="realisations.html" class="cta-button"><i class="fas fa-images"></i>Réalisations</a>
+    <a href="contact.html" class="cta-button"><i class="fas fa-envelope"></i>Contact</a>
+  </section>
+  <a href="https://wa.me/33788326382" class="floating-contact" target="_blank" title="Contact WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  <footer class="scroll-fade">
+    <p>
+      <a href="https://www.instagram.com/abarenovation/" target="_blank" style="color:white; text-decoration:none;">
+        <i class="fab fa-instagram"></i> Suivez-nous sur Instagram
+      </a>
+    </p>
+    &copy; 2025 ABA RENOVATION – Tous droits réservés
+    <a href="https://www.instagram.com/abarenovation/" class="floating-instagram" target="_blank" title="Suivez-nous sur Instagram">
+    <i class="fab fa-instagram"></i>
+  </a>
+  </footer>
 </body>
 </html>
