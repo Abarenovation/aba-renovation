@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ABA RENOVATION</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #f7f5f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: sans-serif;
+    }
+    .logo {
+      opacity: 0;
+      transform: scale(0.9);
+      animation: zoomFade 3s forwards;
+    }
+    @keyframes zoomFade {
+      0% { opacity: 0; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.05); }
+      100% { opacity: 0; transform: scale(1.2); }
+    }
+  </style>
+</head>
+<body>
+  <img src="images/logo aba renovation.png" alt="Logo ABA RENOVATION" class="logo" width="200" />
+
+  <script>
+    setTimeout(function() {
+      window.location.href = "home.html";
+    }, 3500);
+  </script>
+</body>
+</html>
