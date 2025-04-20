@@ -1,0 +1,466 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+  <meta name="description" content="ABA RENOVATION - Rénovation tous corps d'état sur la Presqu'île guérandaise. Peinture, électricité, plomberie, aménagement intérieur et plus.">
+  <meta name="keywords" content="rénovation, bâtiment, guérande, peinture, plomberie, électricité, aménagement, devis, ABA RENOVATION">
+  <meta name="author" content="ABA RENOVATION">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ABA RENOVATION - Accueil</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Baloo+Tamma+2&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f5f2;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    /* Header avec menu sans texte logo */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #fff;
+      padding: 20px 50px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    header nav {
+      display: flex;
+      gap: 30px;
+      margin: 0 auto;
+      justify-content: center;
+      width: 100%;
+    }
+    header a {
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1rem;
+      padding: 10px 20px;
+      transition: color 0.3s ease;
+    }
+    header a:hover {
+      color: #3b5d74;
+    }
+
+    /* Section 1 - Introduction */
+    .section1 {
+      margin-top: 150px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+    .section1 h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: #3b5d74;
+    }
+    .section1 p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      color: #555;
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+
+    /* Section 2 - Services avec plus de cases */
+    .section2 {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      margin-top: 60px;
+      margin-bottom: 60px;
+      flex-wrap: wrap;
+    }
+    .service-card {
+      background-color: #fff;
+      width: 250px;
+      height: 250px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      margin-bottom: 30px;
+    }
+    .service-card:hover {
+      transform: scale(1.05);
+    }
+    .service-card i {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: #3b5d74;
+    }
+    .service-card h3 {
+      font-size: 1.4rem;
+      color: #333;
+    }
+
+    /* Section 3 - Réalisations / Carrousel */
+    .section3 {
+      margin-top: 60px;
+      max-width: 1000px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .section3 h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      color: #3b5d74;
+    }
+    .carousel-container {
+      display: flex;
+      gap: 20px;
+      overflow: hidden;
+    }
+    .carousel-image {
+      width: 300px;
+      height: 200px;
+      border-radius: 10px;
+      background-color: #ccc;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    /* Section 4 - Contact avec icônes téléphone et mail */
+    .section4 {
+      background-color: #3b5d74;
+      padding: 50px 0;
+      color: #fff;
+      margin-top: 60px;
+      width: 100%;
+    }
+    .section4 h3 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    .contact-button {
+      padding: 12px 30px;
+      background-color: #fff;
+      color: #3b5d74;
+      border-radius: 30px;
+      font-size: 1.2rem;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: background-color 0.3s ease;
+    }
+    .contact-button:hover {
+      background-color: #2d4c60;
+      color: #fff;
+    }
+
+    /* Icônes de téléphone et mail */
+    .contact-icons {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 20px;
+    }
+    .contact-icons a {
+      background-color: #fff;
+      color: #3b5d74;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      text-decoration: none;
+      font-size: 1.5rem;
+      transition: transform 0.3s, background-color 0.3s ease;
+    }
+    .contact-icons a:hover {
+      transform: scale(1.1);
+      background-color: #2d4c60;
+      color: #fff;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #fff;
+      padding: 20px 50px;
+      text-align: center;
+      box-shadow: 0 -4px 6px rgba(0,0,0,0.1);
+    }
+    footer p {
+      font-size: 1rem;
+      color: #333;
+    }
+
+    /* Icônes flottantes Instagram et WhatsApp */
+    .floating-socials {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      z-index: 1000;
+    }
+    .floating-socials a {
+      background-color: #25D366;
+      color: white;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      text-decoration: none;
+      font-size: 1.5rem;
+      transition: transform 0.3s, background-color 0.3s ease;
+    }
+    .floating-socials a.instagram {
+      background-color: #E1306C;
+    }
+    .floating-socials a:hover {
+      transform: scale(1.1);
+      background-color: #1a5e40;
+    }
+  
+
+.burger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  position: absolute;
+  right: 30px;
+  top: 25px;
+  z-index: 1001;
+}
+.burger .line {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  margin: 4px 0;
+}
+@media (max-width: 768px) {
+  .burger {
+    display: flex;
+  }
+  header nav {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background-color: #fff;
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+  header nav.active {
+    display: flex;
+  }
+  header nav a {
+    padding: 15px;
+    border-top: 1px solid #eee;
+  }
+}
+
+</style>
+</head>
+<body>
+
+  
+
+
+  <!-- Header sans logo et texte -->
+  <header>
+  
+<!-- Menu Burger (mobile) -->
+<div class="burger" onclick="toggleMenu()">
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+</div>
+
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#realisations">Réalisations</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Section 1 - Introduction -->
+  <div class="section1">
+    <h1>Bienvenue sur ABA RENOVATION</h1>
+    <p>Votre acteur local en rénovation, spécialisé dans les projets de construction, d'aménagement et de transformation sur la Presqu'île guérandaise.</p>
+  </div>
+
+<!-- Section À propos -->
+<section class="section-apropos" style="background-color: #fff; padding: 60px 20px;">
+  <h2 style="text-align: center; font-size: 2.5rem; color: #3b5d74; margin-bottom: 30px;">À propos de nous</h2>
+  <p style="max-width: 800px; margin: 0 auto; font-size: 1.1rem; line-height: 1.7; color: #555;">
+    ABA RENOVATION est une entreprise familiale implantée sur la Presqu'île guérandaise. Forts d'une expérience de plus de 10 ans, nous proposons des prestations de qualité dans tous les corps de métier du bâtiment : rénovation intérieure et extérieure, plomberie, électricité, peinture, et plus encore. Notre équipe est à l'écoute de vos besoins pour des résultats sur mesure, dans le respect des délais et des normes.
+  </p>
+</section>
+
+
+<!-- Section Garanties -->
+<section class="section-garanties" style="background-color: #f0f4f8; padding: 50px 20px;">
+  <h2 style="text-align: center; font-size: 2.5rem; color: #3b5d74; margin-bottom: 30px;">Nos engagements</h2>
+  <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 40px;">
+    <div style="max-width: 250px; background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+      <h3 style="color: #3b5d74;">Garantie décennale</h3>
+      <p style="color: #555;">Toutes nos prestations sont couvertes par une assurance décennale pour votre tranquillité.</p>
+    </div>
+    <div style="max-width: 250px; background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+      <h3 style="color: #3b5d74;">Respect des délais</h3>
+      <p style="color: #555;">Un planning clair et des engagements tenus sur les dates de livraison.</p>
+    </div>
+    <div style="max-width: 250px; background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+      <h3 style="color: #3b5d74;">Suivi personnalisé</h3>
+      <p style="color: #555;">Un interlocuteur unique pour suivre l’avancement et répondre à toutes vos questions.</p>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Section 2 - Services -->
+  <div class="section2" id="services">
+    <div class="service-card">
+      <i class="fas fa-tools"></i>
+      <h3>Rénovation complète</h3>
+    </div>
+    <div class="service-card">
+      <i class="fas fa-paint-roller"></i>
+      <h3>Peinture et décoration</h3>
+    </div>
+    <div class="service-card">
+      <i class="fas fa-home"></i>
+      <h3>Aménagement intérieur</h3>
+    </div>
+    <div class="service-card">
+      <i class="fas fa-cogs"></i>
+      <h3>Maintenance & Réparations</h3>
+    </div>
+    <div class="service-card">
+      <i class="fas fa-lightbulb"></i>
+      <h3>Électricité & Éclairage</h3>
+    </div>
+    <div class="service-card">
+      <i class="fas fa-sink"></i>
+      <h3>Plomberie</h3>
+    </div>
+  </div>
+
+  <!-- Section 3 - Réalisations -->
+  <div class="section3" id="realisations">
+    <h2>Nos réalisations</h2>
+    <div class="carousel-container">
+<div style="margin-top: 20px;">
+  <button id="prevBtn" style="margin-right: 10px;">&#9664;</button>
+  <button id="nextBtn">&#9654;</button>
+</div>
+
+      <div class="carousel-image"></div>
+      <div class="carousel-image"></div>
+      <div class="carousel-image"></div>
+    </div>
+  </div>
+
+  <!-- Section 4 - Contact -->
+  
+    <h3>Nous contacter</h3>
+    <a href="contact.html" class="contact-button">Demandez un devis</a>
+
+  
+<!-- Section Avis Clients -->
+<div class="section5" id="avis-clients" style="margin-top: 60px; width: 100%; background-color: #fff; padding: 40px 20px;">
+  <h2 style="font-size: 2.5rem; color: #3b5d74; margin-bottom: 40px;">Avis de nos clients</h2>
+  <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 30px;">
+    <div style="background-color: #f7f5f2; padding: 20px; border-radius: 10px; max-width: 300px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+      <p style="font-style: italic;">« Travail soigné et équipe très professionnelle. Je recommande sans hésitation ! »</p>
+      <p style="font-weight: bold; margin-top: 10px;">— Sophie L.</p>
+    </div>
+    <div style="background-color: #f7f5f2; padding: 20px; border-radius: 10px; max-width: 300px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+      <p style="font-style: italic;">« Projet livré dans les temps et avec un excellent suivi. Merci ABA RENOVATION ! »</p>
+      <p style="font-weight: bold; margin-top: 10px;">— Marc D.</p>
+    </div>
+    <div style="background-color: #f7f5f2; padding: 20px; border-radius: 10px; max-width: 300px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+      <p style="font-style: italic;">« Un vrai sens du détail, le résultat est impeccable. »</p>
+      <p style="font-weight: bold; margin-top: 10px;">— Claire T.</p>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 ABA RENOVATION. Tous droits réservés.</p>
+  </footer>
+
+  <!-- Icônes flottantes Instagram et WhatsApp -->
+  <div class="floating-socials">
+    <a href="https://wa.me/33788326382" target="_blank" title="Contactez-nous sur WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="https://www.instagram.com/abarenovation/" target="_blank" title="Suivez-nous sur Instagram" class="instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+  </div>
+
+
+<script>
+  function toggleMenu() {
+    const nav = document.querySelector('header nav');
+    nav.classList.toggle('active');
+  }
+</script>
+
+<script>
+  let index = 0;
+  function showSlide(i) {
+    const slides = document.querySelectorAll('.carousel-image');
+    if (i >= slides.length) index = 0;
+    else if (i < 0) index = slides.length - 1;
+    else index = i;
+
+    slides.forEach((slide, idx) => {
+      slide.style.display = idx === index ? 'block' : 'none';
+    });
+  }
+  function nextSlide() {
+    showSlide(index + 1);
+  }
+  function prevSlide() {
+    showSlide(index - 1);
+  }
+  document.addEventListener("DOMContentLoaded", () => {
+    showSlide(index);
+    document.getElementById('nextBtn').addEventListener('click', nextSlide);
+    document.getElementById('prevBtn').addEventListener('click', prevSlide);
+  });
+</script>
+
+</body>
+</html>
