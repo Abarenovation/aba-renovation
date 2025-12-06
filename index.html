@@ -1,799 +1,1038 @@
-
 <!DOCTYPE html>
-
 <html lang="fr">
 <head>
-  <meta name="google-site-verification" content="WLfCJt_XQJ3SifHSoUM-sZE78JtDMMhPovsLFX_ytbk" />
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ABA RÉNOVATION – Travaux de rénovation tous corps d’état</title>
-  <meta name="description" content="ABA RÉNOVATION vous accompagne dans vos projets de rénovation intérieure et extérieure en Loire-Atlantique. Qualité, fiabilité et satisfaction garantie." />
-  <meta name="author" content="ABA RÉNOVATION" />
-  <meta name="robots" content="index, follow" />
-  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-</head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="ABA RÉNOVATION, votre acteur local sur la presqu'île guérandaise pour la rénovation tous corps d'état, la rénovation énergétique, la construction RE2020 et l'accompagnement personnalisé." />
 
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>ABA RENOVATION - Accueil</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
-<style>
+  <style>
+    :root {
+      --primary: #1f4b6f;
+      --primary-light: #2f6fa3;
+      --accent: #c79a61;
+      --bg: #f7f7f7;
+      --text: #222;
+      --muted: #777;
+      --white: #ffffff;
+      --shadow-soft: 0 10px 30px rgba(0,0,0,0.08);
+      --radius-lg: 18px;
+      --radius-xl: 28px;
+    }
+
     * {
       box-sizing: border-box;
-    }
-    body {
       margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to bottom right, #f7f5f2, #dceeff);
-      color: #333;
+      padding: 0;
     }
-    html {
-      scroll-behavior: smooth;
-    }
-    #intro {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-color: #1c3e57;
-      display: flex; flex-direction: column;
-      justify-content: center; align-items: center;
-      color: white;
-      z-index: 1000;
-      animation: fadeOut 1s ease forwards;
-      animation-delay: 2.5s;
-    }
-    #intro img {
-      width: 200px;
-      background: white;
-      border-radius: 50%;
-      padding: 15px;
-    }
-    #intro p {
-      margin-top: 1rem;
-      font-size: 1.2rem;
-      opacity: 0;
-      animation: fadeInText 1s ease forwards;
-      animation-delay: 1s;
-    }
-    @keyframes fadeInText { to { opacity: 1; } }
-    @keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
 
-    .hero {
-      text-align: center;
-      padding: 5rem 1rem 2rem;
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
     }
-    .hero img {
-      width: 200px;
-      margin-bottom: 1rem;
-      background: white;
-      border-radius: 50%;
-      padding: 15px;
-    }
-    .hero h1 {
-      font-size: 2.5rem;
-      color: #3b5d74;
-    }
-    .hero p {
-      font-size: 1.2rem;
-      color: #666;
-    }
-    .cta-container {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      justify-items: center;
-    }
-    .cta-button {
-      text-align: center;
-      padding: 1.5rem;
-      width: 200px;
+
+    a {
+      color: inherit;
       text-decoration: none;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: all 0.3s;
-      color: #1c3e57;
-      font-weight: 600;
     }
-    .cta-button i {
-      font-size: 3rem;
-      color: #3b5d74;
-      margin-bottom: 0.5rem;
-    }
-    .cta-button:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
-    }
-    .contact-section, .realisations {
-      padding: 3rem 1rem;
-      text-align: center;
-    }
-    .contact-section {
-      background-color: #ffffff;
-    }
-    .contact-section h2,
-    .realisations h2 {
-      font-size: 2rem;
-      color: #3b5d74;
-      margin-bottom: 1.5rem;
-    }
-    .contact-form {
-      max-width: 600px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .contact-form input,
-    .contact-form textarea {
-      padding: 1rem;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-    }
-    .contact-form button {
-      background-color: #3b5d74;
-      color: white;
-      padding: 1rem;
-      font-size: 1rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-    .contact-form button:hover {
-      background-color: #2a445b;
-    }
-    
-    .carousel-container {
-      overflow: hidden;
-      width: 100%;
-      max-width: 800px;
-      margin: 0 auto;
-      position: relative;
-    }
-    .carousel {
-      display: flex;
-      
-      width: fit-content;
-    }
-    .carousel-item {
-      min-width: 100%;
-      position: relative;
-      scroll-snap-align: center;
-    }
-    .carousel img {
-      width: 33%;
-      height: auto;
-      max-height: 200px;
-      border-radius: 10px;
-      object-fit: contain;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      margin: auto;
+
+    img {
+      max-width: 100%;
       display: block;
     }
-    .carousel-item i {
-      position: absolute;
-      bottom: 10px;
-      right: 10px;
-      font-size: 1.5rem;
-      color: white;
-      background: rgba(0,0,0,0.5);
-      padding: 8px;
-      border-radius: 50%;
-    }
-    @keyframes scrollCarousel {
-      0% { transform: translateX(0); }
-      16.66% { transform: translateX(-100%); }
-      33.33% { transform: translateX(-200%); }
-      50% { transform: translateX(-300%); }
-      66.66% { transform: translateX(-400%); }
-      83.33% { transform: translateX(-500%); }
-      100% { transform: translateX(0); }
-    }
-    .carousel-container:hover .carousel {
-      animation-play-state: paused;
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 16px;
     }
 
-    footer {
-      background-color: #1c3e57;
-      color: white;
-      text-align: center;
-      padding: 1rem;
+    /* HEADER */
+    header {
+      background: var(--white);
+      box-shadow: var(--shadow-soft);
+      position: sticky;
+      top: 0;
+      z-index: 50;
     }
-  
-    
-    .floating-socials {
-      position: fixed;
-      bottom: 80px;
-      right: 20px;
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      gap: 16px;
+    }
+
+    .logo-block {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-weight: 700;
+      font-size: 18px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .logo-text {
       display: flex;
       flex-direction: column;
-      gap: 15px;
-      z-index: 1000;
+      font-size: 14px;
     }
-    .float-button {
-      background-color: #3b5d74;
-      color: white;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
+
+    .logo-text span:first-child {
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+
+    .logo-text span:last-child {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    nav {
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      transition: background-color 0.3s, transform 0.3s;
-      text-decoration: none;
-    }
-    .float-button:hover {
-      background-color: #2a445b;
-      transform: scale(1.1);
-    }
-    .float-button.instagram {
-      background-color: #C13584;
-    }
-    .float-button.whatsapp {
-      background-color: #25D366;
+      gap: 18px;
+      font-size: 14px;
     }
 
+    nav a {
+      position: relative;
+      padding-bottom: 3px;
+    }
 
-  
-    
-    .carousel-btn {
+    nav a:hover::after {
+      content: "";
       position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: rgba(60, 60, 60, 0.6);
-      color: white;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 999px;
+    }
+
+    .header-cta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+    }
+
+    .btn {
+      border-radius: 999px;
       border: none;
-      width: 50px;
-      height: 50px;
-      font-size: 1.5rem;
       cursor: pointer;
-      border-radius: 50%;
-      z-index: 10;
+      padding: 9px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: var(--white);
+      box-shadow: 0 6px 16px rgba(31,75,111,0.35);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-light);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(31,75,111,0.35);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid rgba(0,0,0,0.12);
+      color: var(--text);
+    }
+
+    .btn-outline:hover {
+      background: #f0f4f8;
+    }
+
+    .phone-mini {
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .phone-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #2ecc71;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 32px 0 40px;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 26px;
+      align-items: center;
+    }
+
+    .badge-local {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #e8f1fb;
+      color: #2f4a6b;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 10px;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .hero h1 {
+      font-size: 30px;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .hero-sub {
+      color: var(--muted);
+      margin-bottom: 18px;
+      font-size: 14px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 18px;
+      font-size: 12px;
+    }
+
+    .hero-pill {
+      background: var(--white);
+      border-radius: 999px;
+      padding: 7px 10px;
+      border: 1px solid rgba(0,0,0,0.04);
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-pill span {
+      font-weight: 600;
+      font-size: 11px;
+    }
+
+    .hero-arrow {
+      font-size: 13px;
+      color: var(--primary);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .hero-note {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* Hero right card */
+    .hero-card {
+      background: linear-gradient(135deg, #1f4b6f, #182738);
+      border-radius: var(--radius-xl);
+      padding: 18px;
+      color: var(--white);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(255,255,255,0.25), transparent 55%);
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .hero-card-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-card-title {
+      font-weight: 600;
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+
+    .hero-card-sub {
+      font-size: 12px;
+      opacity: 0.9;
+      margin-bottom: 12px;
+    }
+
+    .hero-card-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 12px;
+    }
+
+    .hero-tag {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.2);
+      backdrop-filter: blur(4px);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 12px;
+      font-size: 11px;
+      opacity: 0.95;
+    }
+
+    .hero-stat strong {
+      font-size: 13px;
+      display: block;
+    }
+
+    .hero-card-footer {
+      margin-top: 14px;
+      font-size: 11px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      opacity: 0.95;
+    }
+
+    /* Sections */
+    section {
+      padding: 28px 0;
+    }
+
+    h2.section-title {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .section-subtitle {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    /* Services */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 14px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(0,0,0,0.03);
+      font-size: 13px;
+    }
+
+    .service-card h3 {
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .service-tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    /* Qui sommes-nous */
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .about-text {
+      font-size: 14px;
+      color: #444;
+    }
+
+    .about-pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .about-pill {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #e9edf3;
+      font-size: 12px;
+    }
+
+    .about-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 14px;
+      box-shadow: var(--shadow-soft);
+      font-size: 13px;
+    }
+
+    /* Réalisations */
+    .realisations-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 14px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .realisations-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .realisations-controls button {
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.12);
+      width: 32px;
+      height: 32px;
+      background: #f5f5f5;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .realisations-viewer {
+      border-radius: 14px;
+      background: #e4e7ec;
+      height: 190px;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: background-color 0.3s ease;
-    }
-    .carousel-btn:hover {
-      background-color: rgba(60, 60, 60, 0.8);
-    }
-    .carousel-btn.left {
-      left: 10px;
-    }
-    .carousel-btn.right {
-      right: 10px;
+      font-size: 13px;
+      color: var(--muted);
     }
 
+    /* Avis */
+    .avis-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
 
+    .avis-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 12px;
+      box-shadow: var(--shadow-soft);
+      font-size: 13px;
+    }
 
-.nos-activites h2 { text-align: center; font-size: 2rem; color: #3b5d74; margin: 2rem 0 1rem; }
-.qui-sommes-nous {
-  padding: 2rem 1rem;
-  background-color: #ffffff;
-  text-align: center;
-}
-.qui-sommes-nous h2 {
-  font-size: 2rem;
-  color: #3b5d74;
-  margin-bottom: 1rem;
-}
-.qui-sommes-nous p {
-  max-width: 700px;
-  margin: 0 auto;
-  font-size: 1.1rem;
-  color: #555;
-}
+    .avis-name {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
 
-.carte-localisation {
-  padding: 2rem 1rem;
-  background-color: #f0f8ff;
-  text-align: center;
-}
-.carte-localisation h2 {
-  font-size: 2rem;
-  color: #3b5d74;
-  margin-bottom: 1rem;
-}
+    .stars {
+      color: #f4b000;
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
 
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 20px;
+    }
 
-.avis-clients {
-  padding: 2rem 1rem;
-  background-color: #ffffff;
-  text-align: center;
-}
-.avis-clients h2 {
-  font-size: 2rem;
-  color: #3b5d74;
-  margin-bottom: 1rem;
-}
-.avis-clients .avis {
-  margin: 1rem auto;
-  max-width: 600px;
-  font-size: 1rem;
-  color: #555;
-  background: #f7f7f7;
-  padding: 1rem;
-  border-radius: 10px;
-}
+    form {
+      display: grid;
+      gap: 10px;
+      font-size: 13px;
+    }
 
-.bandeau-footer {
-  background-color: #1c3e57;
-  color: white;
-  text-align: center;
-  padding: 1rem 0;
-  font-size: 0.9rem;
-}
+    label {
+      font-weight: 500;
+      font-size: 13px;
+    }
 
-.rappel-button {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  z-index: 1000;
-}
-.rappel-button a {
-  background-color: #3b5d74;
-  color: white;
-  padding: 0.7rem 1.2rem;
-  border-radius: 30px;
-  font-weight: bold;
-  text-decoration: none;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-.rappel-button a:hover {
-  background-color: #2a445b;
-  transform: scale(1.05);
-}
+    input, textarea {
+      width: 100%;
+      padding: 9px 10px;
+      border-radius: 10px;
+      border: 1px solid rgba(0,0,0,0.12);
+      font: inherit;
+    }
 
-@media (max-width: 768px) {
-  .desktop-rappel { display: none; }
-  .mobile-rappel { display: inline-block; }
-}
-@media (min-width: 769px) {
-  .desktop-rappel {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    background-color: #fff;
-    padding: 1rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  }
-  .desktop-rappel input, .desktop-rappel button {
-    font-size: 1rem;
-    padding: 0.5rem;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-  }
-  .desktop-rappel button {
-    background-color: #3b5d74;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    border: none;
-  }
-  .desktop-rappel button:hover {
-    background-color: #2a445b;
-  }
-  .mobile-rappel { display: none; }
-}
+    textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
 
-.desktop-rappel button {
-  font-size: 1.1rem;
-  padding: 0.7rem;
-  background: linear-gradient(to right, #3b5d74, #2a445b);
-  border: none;
-  border-radius: 30px;
-  font-weight: bold;
-  color: white;
-  cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.desktop-rappel button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.35);
-}
+    .contact-infos {
+      font-size: 13px;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 14px;
+      box-shadow: var(--shadow-soft);
+    }
 
-.hidden {
-  display: none;
-}
-.toggle-form {
-  background-color: #3b5d74;
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 30px;
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 10px;
-  font-size: 0.9rem;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  transition: transform 0.2s ease;
-}
-.toggle-form:hover {
-  transform: scale(1.05);
-}
+    .contact-infos div {
+      margin-bottom: 6px;
+    }
 
-@media (max-width: 768px) {
-  .cta-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-  }
+    /* Footer */
+    footer {
+      padding: 18px 0 26px;
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+    }
 
-  .cta-button {
-    width: 45%;
-  }
-}
+    .footer-links {
+      margin-top: 6px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-size: 12px;
+    }
 
+    /* Bouton flottant "Être rappelé" (mobile) */
+    .callback-floating {
+      position: fixed;
+      bottom: 16px;
+      right: 16px;
+      z-index: 60;
+      display: none;
+    }
 
-@media (max-width: 768px) {
-  .hide-mobile {
-    display: none;
-  }
-}
+    .callback-floating button {
+      background: var(--accent);
+      color: var(--white);
+      border-radius: 999px;
+      border: none;
+      padding: 10px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
 
-@media (max-width: 768px) {
-  .center-mobile {
-    text-align: center;
-  }
-}
+    /* Responsive */
+    .burger {
+      display: none;
+      flex-direction: column;
+      gap: 3px;
+      cursor: pointer;
+    }
 
-@media (max-width: 768px) {
-  .visible-mobile {
-    display: block;
-    padding: 1rem;
-    background-color: #f0f8ff;
-    margin: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  }
-  .visible-mobile form {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-  .visible-mobile input, .visible-mobile button {
-    font-size: 1rem;
-    padding: 0.75rem;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-  }
-  .visible-mobile button {
-    background-color: #3b5d74;
-    color: white;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-  }
-  .visible-mobile button:hover {
-    background-color: #2a445b;
-  }
-}
+    .burger span {
+      width: 18px;
+      height: 2px;
+      background: #333;
+      border-radius: 999px;
+    }
 
-@media (max-width: 768px) {
-  .rappel-mobile {
-    background-color: #3b5d74;
-    color: white;
-  }
-}
+    @media (max-width: 900px) {
+      nav, .header-cta {
+        display: none;
+      }
+      .burger {
+        display: flex;
+      }
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-card {
+        order: -1;
+      }
+      .services-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .avis-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .callback-floating {
+        display: block;
+      }
+    }
 
-@media (max-width: 768px) {
-  .mobile-floating-rappel {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .toggle-form-mobile {
-    background-color: #3b5d74;
-    color: white;
-    padding: 0.7rem 1.2rem;
-    border-radius: 30px;
-    font-weight: bold;
-    cursor: pointer;
-    border: none;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  }
-  .form-mobile {
-    background: white;
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  .form-mobile input, .form-mobile button {
-    font-size: 1rem;
-    padding: 0.6rem;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-  }
-  .form-mobile button {
-    background-color: #3b5d74;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  .form-mobile button:hover {
-    background-color: #2a445b;
-  }
-}
-
-@media (max-width: 768px) {
-  .rappel-button {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    z-index: 1000;
-  }
-  .rappel-button .toggle-form {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
-    border-radius: 20px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  }
-  .desktop-rappel {
-    display: none;
-  }
-}
-@media (min-width: 769px) {
-  .rappel-button {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    z-index: 1000;
-  }
-}
-
-@media (max-width: 768px) {
-  .desktop-rappel {
-    display: none !important;
-  }
-}
-@media (min-width: 769px) {
-  .desktop-rappel {
-    display: flex !important;
-    flex-direction: column;
-    gap: 0.5rem;
-    background-color: #fff;
-    padding: 1rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  }
-  .desktop-rappel input, .desktop-rappel button {
-    font-size: 1rem;
-    padding: 0.5rem;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-  }
-  .desktop-rappel button {
-    background-color: #3b5d74;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    border: none;
-  }
-  .desktop-rappel button:hover {
-    background-color: #2a445b;
-  }
-}
-
-@media (min-width: 769px) {
-  .rappel-button {
-    background: linear-gradient(to right, #3b5d74, #2a445b);
-    padding: 1.5rem;
-    border-radius: 16px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-    color: white;
-    max-width: 350px;
-    font-family: 'Poppins', sans-serif;
-  }
-
-  .rappel-button h3 {
-    font-size: 1.4rem;
-    margin-bottom: 0.75rem;
-    color: white;
-    text-align: center;
-  }
-
-  .desktop-rappel input, .desktop-rappel button {
-    width: 100%;
-    padding: 0.75rem;
-    font-size: 1rem;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-  }
-
-  .desktop-rappel button {
-    background: linear-gradient(to right, #6cc1ff, #0077b6);
-    color: white;
-    font-weight: bold;
-    border: none;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  }
-
-  .desktop-rappel button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 14px rgba(0,0,0,0.25);
-  }
-}
-
-@media (min-width: 769px) {
-  .rappel-button {
-    background: white;
-    padding: 1rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    color: #333;
-    max-width: 300px;
-    font-family: 'Poppins', sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .desktop-rappel {
-    width: 100%;
-    display: flex !important;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .desktop-rappel input, .desktop-rappel button {
-    width: 100%;
-    padding: 0.6rem;
-    font-size: 0.95rem;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-  }
-
-  .desktop-rappel button {
-    background-color: #3b5d74;
-    color: white;
-    font-weight: 500;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-  }
-
-  .desktop-rappel button:hover {
-    background-color: #2a445b;
-  }
-}
-
-@media (min-width: 769px) {
-  .float-rappel-desktop {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    z-index: 1000;
-    background-color: #3b5d74;
-    color: white;
-    border: none;
-    padding: 0.8rem 1rem;
-    border-radius: 50%;
-    font-size: 1.2rem;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  }
-
-  .rappel-button {
-    position: fixed;
-    bottom: 80px;
-    left: 20px;
-    z-index: 999;
-  }
-}
-
-@media (min-width: 769px) {
-  .float-rappel-desktop {
-    padding: 0.6rem 1.2rem;
-    border-radius: 30px;
-    font-size: 1rem;
-  }
-}
-</style>
+    @media (max-width: 600px) {
+      .services-grid,
+      .avis-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero h1 {
+        font-size: 24px;
+      }
+      .hero-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+  </style>
 </head>
 <body>
-<div id="intro">
-<img alt="Logo ABA RENOVATION" src="https://i.postimg.cc/mDk3hGhb/logo-aba-renovation.png"/>
-<p class="center-mobile">Votre acteur local sur la presqu'île guérandaise</p>
-</div>
-<div class="hero">
-<img alt="Logo ABA RENOVATION" src="https://i.postimg.cc/mDk3hGhb/logo-aba-renovation.png"/>
-<h1>Bienvenue sur ABA RENOVATION</h1>
-<p class="hide-mobile">Spécialiste de la rénovation sur la presqu'île guérandaise</p>
-</div><section class="nos-activites"><h2>Nos activités</h2><div class="cta-container"><div class="cta-button"><i class="fas fa-solar-panel" style="font-size: 3rem; display: block; margin-bottom: 0.5rem;"></i><span style="display: block;">Rénovation énergétique</span></div><div class="cta-button"><i class="fas fa-hard-hat" style="font-size: 3rem; display: block; margin-bottom: 0.5rem;"></i><span style="display: block;">Construction RE2020</span></div><div class="cta-button"><i class="fas fa-hands-helping" style="font-size: 3rem; display: block; margin-bottom: 0.5rem;"></i><span style="display: block;">Accompagnement personnalisé</span></div><div class="cta-button"><i class="fas fa-desktop" style="font-size: 3rem; display: block; margin-bottom: 0.5rem;"></i><span style="display: block;">Plan 3D</span></div><div class="cta-button"><i class="fas fa-chart-line" style="font-size: 3rem; display: block; margin-bottom: 0.5rem;"></i><span style="display: block;">Audit énergétique</span></div><div class="cta-button"><i class="fas fa-house-crack" style="font-size: 3rem; display: block; margin-bottom: 0.5rem;"></i><span style="display: block;">Rénovation tous corps d'état</span></div></div></section>
-<section class="qui-sommes-nous"><h2>Qui sommes-nous ?</h2><p>ABA RÉNOVATION est une entreprise spécialisée dans la rénovation tous corps d'état, active sur la presqu'île guérandaise. Nous mettons notre savoir-faire au service de vos projets, qu'il s'agisse d'amélioration énergétique, de construction RE2020, ou encore de conception 3D.</p></section><section class="contact-section">
-<h2>Contactez-nous</h2>
-<form class="contact-form">
-<input name="name" placeholder="Votre nom" required="" type="text"/>
-<input name="email" placeholder="Votre email" required="" type="email"/>
-<textarea name="message" placeholder="Votre message" required="" rows="5"></textarea>
-<button type="submit">Envoyer</button>
-</form>
-</section>
-<section class="realisations">
-<h2>Nos réalisations</h2>
-<div class="carousel-container">
-<button class="carousel-btn left" onclick="scrollCarousel(-1)">❮</button>
-<button class="carousel-btn right" onclick="scrollCarousel(1)">❯</button>
-<div class="carousel"><div class="carousel-item"><img alt="Réalisation" src="https://i.postimg.cc/9m52xQDt/20221018-152028.jpg"/><i class="fas fa-hammer"></i></div><div class="carousel-item"><img alt="Réalisation" src="https://i.postimg.cc/rp5B65DG/20230522-095959.jpg"/><i class="fas fa-hammer"></i></div><div class="carousel-item"><img alt="Réalisation" src="https://i.postimg.cc/9MVvcz96/20230522-100011.jpg"/><i class="fas fa-hammer"></i></div><div class="carousel-item"><img alt="Réalisation" src="https://i.postimg.cc/zGHmjs5c/IMG-4289.jpg"/><i class="fas fa-hammer"></i></div><div class="carousel-item"><img alt="Réalisation" src="https://i.postimg.cc/L8cc0x86/Resized-20231213-175600.jpg"/><i class="fas fa-hammer"></i></div></div>
-</div>
-</section>
-<section class="avis-clients"><h2>Avis clients</h2><div class="avis"><strong>Julie M.</strong><p>⭐⭐⭐⭐⭐</p><p>Travail très professionnel et soigné. Je recommande vivement !</p></div><div class="avis"><strong>Marc D.</strong><p>⭐⭐⭐⭐</p><p>Chantier bien mené, équipe réactive et à l'écoute.</p></div><div class="avis"><strong>Sophie R.</strong><p>⭐⭐⭐⭐⭐</p><p>Un vrai partenaire pour notre rénovation énergétique.</p></div></section><section class="carte-localisation"><h2>Où nous trouver ?</h2><iframe allowfullscreen="" height="350" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10894.67898120294!2d-2.317!3d47.448!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDfCsDI2JzUyLjgiTiAywrAxOScwMi43Ilc!5e0!3m2!1sfr!2sfr!4v1713701111111!5m2!1sfr!2sfr" style="border:0;" width="100%"></iframe></section><footer>
-<p>© 2025 ABA RENOVATION – Tous droits réservés</p>
-<div style="margin-top: 10px;">
-<a href="https://www.instagram.com/abarenovation/" style="color: white; margin: 0 10px;" target="_blank">
-<i class="fab fa-instagram fa-lg"></i>
-</a>
-<a href="https://wa.me/33788326382" style="color: white; margin: 0 10px;" target="_blank">
-<i class="fab fa-whatsapp fa-lg"></i>
-</a>
-</div>
-</footer><div class="bandeau-footer"><p>📞 07 88 32 63 82  |  ✉️ abarenovation44@gmail.com  |  📍 Herbignac</p></div>
-<div class="floating-socials">
-<a class="float-button instagram" href="https://www.instagram.com/abarenovation/" target="_blank"><i class="fab fa-instagram"></i></a>
-<a class="float-button whatsapp" href="https://wa.me/33788326382" target="_blank"><i class="fab fa-whatsapp"></i></a>
-</div>
-<script>
-    let currentIndex = 0;
-    function scrollCarousel(direction) {
-      const carousel = document.querySelector('.carousel');
-      const items = document.querySelectorAll('.carousel-item');
-      currentIndex = (currentIndex + direction + items.length) % items.length;
-      const offset = -currentIndex * 100;
-      carousel.style.transition = "transform 0.5s ease";
-      carousel.style.transform = `translateX(${offset}%)`;
-    }
-  </script>
-<div class="mobile-rappel-form visible-mobile" id="mobile-rappel-form">
-</div>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  const toggleBtnMobile = document.querySelector(".toggle-form-mobile");
-  const formMobile = document.querySelector(".form-mobile");
-  if(toggleBtnMobile && formMobile) {
-    toggleBtnMobile.addEventListener("click", function() {
-      formMobile.classList.toggle("hidden");
-    });
-  }
-});
-</script>
-<div class="rappel-button" style="display: none;"><i class="fas fa-phone" style="font-size: 1.3rem; margin-bottom: 0.5rem; color: #3b5d74;"></i>
-<form action="https://formsubmit.co/abarenovation44@gmail.com" class="desktop-rappel hidden" method="POST">
-<input name="_captcha" type="hidden" value="false"/>
-<input name="_next" type="hidden" value="https://www.google.com"/>
-<input name="Nom" placeholder="Votre nom" required="" type="text"/>
-<input name="Téléphone" placeholder="Votre numéro" required="" type="tel"/>
-<button type="submit">💬 Demander un rappel maintenant</button>
-</form>
-</div>
-<button class="float-rappel-desktop">📞 Être rappelé</button><script>
-document.addEventListener("DOMContentLoaded", function() {
-  const toggleFloat = document.querySelector(".float-rappel-desktop");
-  const rappelBox = document.querySelector(".rappel-button");
-  if (toggleFloat && rappelBox) {
-    toggleFloat.addEventListener("click", function() {
-      if (rappelBox.style.display === "none" || !rappelBox.style.display) {
-        rappelBox.style.display = "flex";
-      } else {
-        rappelBox.style.display = "none";
+
+  <!-- Bouton flottant mobile -->
+  <div class="callback-floating">
+    <button onclick="scrollToContact()">
+      📞 Être rappelé
+    </button>
+  </div>
+
+  <header>
+    <div class="container header-inner">
+      <div class="logo-block">
+        <div class="logo-mark">A</div>
+        <div class="logo-text">
+          <span>ABA RÉNOVATION</span>
+          <span>Travaux de rénovation tous corps d’état</span>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#services">Services</a>
+        <a href="#about">Qui sommes-nous ?</a>
+        <a href="#realisations">Réalisations</a>
+        <a href="#avis">Avis clients</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="header-cta">
+        <div class="phone-mini">
+          <span class="phone-dot"></span>
+          <span>07 88 32 63 82</span>
+        </div>
+        <a class="btn btn-outline" href="https://wa.me/33788326382" target="_blank" rel="noopener">WhatsApp</a>
+        <button class="btn btn-primary" onclick="scrollToContact()">Devis gratuit</button>
+      </div>
+
+      <div class="burger" onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Menu mobile injecté dynamiquement -->
+  <div id="mobile-menu" style="display:none; background:#ffffff; box-shadow:0 12px 30px rgba(0,0,0,0.15); position:fixed; top:56px; left:0; right:0; z-index:40;">
+    <div class="container" style="padding:12px 16px 16px; display:flex; flex-direction:column; gap:10px; font-size:14px;">
+      <a href="#services" onclick="closeMobileMenu()">Services</a>
+      <a href="#about" onclick="closeMobileMenu()">Qui sommes-nous ?</a>
+      <a href="#realisations" onclick="closeMobileMenu()">Réalisations</a>
+      <a href="#avis" onclick="closeMobileMenu()">Avis clients</a>
+      <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+      <button class="btn btn-primary" style="width:100%; justify-content:center; margin-top:4px;" onclick="closeMobileMenu(); scrollToContact();">
+        📞 Être rappelé
+      </button>
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div>
+          <div class="badge-local">
+            <span class="badge-dot"></span>
+            Votre acteur local sur la presqu'île guérandaise
+          </div>
+          <h1>
+            Spécialiste de la <span>rénovation</span><br /> sur la presqu'île guérandaise
+          </h1>
+          <p class="hero-sub">
+            Rénovation énergétique, construction RE2020, accompagnement personnalisé et travaux tous corps d'état à Herbignac et alentours.
+          </p>
+
+          <div class="hero-grid">
+            <div class="hero-pill">
+              <span>Rénovation énergétique</span>
+              <span class="hero-arrow">➜</span>
+            </div>
+            <div class="hero-pill">
+              <span>Construction RE2020</span>
+              <span class="hero-arrow">➜</span>
+            </div>
+            <div class="hero-pill">
+              <span>Audit & plans 3D</span>
+              <span class="hero-arrow">➜</span>
+            </div>
+          </div>
+
+          <div class="hero-actions">
+            <button class="btn btn-primary" onclick="scrollToContact()">Demander un devis gratuit</button>
+            <button class="btn btn-outline" onclick="scrollToContact()">Être rappelé</button>
+          </div>
+          <div class="hero-note">
+            Réponse sous 24h ouvrées • Déplacements sur la presqu'île guérandaise et le 44
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div class="hero-card-inner">
+            <div class="hero-card-title">Rénovation tous corps d'état</div>
+            <div class="hero-card-sub">
+              Un interlocuteur unique pour coordonner vos travaux et sécuriser votre chantier.
+            </div>
+
+            <div class="hero-card-row">
+              <div class="hero-tag">Salle de bain, cuisine, extensions</div>
+              <div class="hero-tag">Isolation & performance énergétique</div>
+            </div>
+
+            <div class="hero-stats">
+              <div class="hero-stat">
+                <strong>Réactivité</strong>
+                Devis rapide & suivi chantier
+              </div>
+              <div class="hero-stat">
+                <strong>Local</strong>
+                Basé à Herbignac, presqu'île guérandaise
+              </div>
+            </div>
+
+            <div class="hero-card-footer">
+              <span>📍 Herbignac (44) • Presqu'île guérandaise</span>
+              <span>📞 07 88 32 63 82</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="container">
+        <h2 class="section-title">Nos activités</h2>
+        <p class="section-subtitle">
+          De la rénovation énergétique à la salle de bain clé en main, ABA RÉNOVATION vous accompagne sur l’ensemble de votre projet.
+        </p>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-tag">Rénovation énergétique</div>
+            <h3>Isolation & performance</h3>
+            <p>
+              Isolation, menuiseries, correction des ponts thermiques, amélioration du confort hiver comme été.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-tag">Construction RE2020</div>
+            <h3>Projets neufs & extensions</h3>
+            <p>
+              Respect des normes RE2020, gestion globale des corps d’état pour vos constructions et agrandissements.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-tag">Accompagnement</div>
+            <h3>Plans 3D & suivi</h3>
+            <p>
+              Accompagnement personnalisé, plans 3D et pilotage de votre chantier de A à Z.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-tag">Tous corps d’état</div>
+            <h3>Rénovation complète</h3>
+            <p>
+              Salle de bain, cuisine, sols, cloisons, électricité, plomberie et finitions.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-tag">Vérandas & ouvertures</div>
+            <h3>Confort & lumière</h3>
+            <p>
+              Amélioration de la performance de vérandas, remplacement de menuiseries, optimisation des apports lumineux.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-tag">Conseil</div>
+            <h3>Audit & priorisation</h3>
+            <p>
+              Analyse de l’existant, priorisation des travaux, conseils pour mieux investir dans votre rénovation.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUI SOMMES-NOUS -->
+    <section id="about">
+      <div class="container about-grid">
+        <div>
+          <h2 class="section-title">Qui sommes-nous ?</h2>
+          <p class="about-text">
+            ABA RÉNOVATION est une entreprise spécialisée dans la rénovation tous corps d'état, active sur la
+            presqu'île guérandaise. Nous mettons notre savoir-faire au service de vos projets : amélioration énergétique,
+            construction RE2020, conception 3D et rénovation complète de votre habitat.
+          </p>
+          <p class="about-text" style="margin-top:8px;">
+            Basés à Herbignac, nous intervenons localement avec une approche de proximité : écoute, conseil, et
+            transparence tout au long du chantier.
+          </p>
+
+          <div class="about-pill-list">
+            <div class="about-pill">Entreprise locale</div>
+            <div class="about-pill">Tous corps d'état</div>
+            <div class="about-pill">Suivi personnalisé</div>
+            <div class="about-pill">Conseil et accompagnement</div>
+          </div>
+        </div>
+
+        <aside class="about-card">
+          <strong>Pourquoi nous confier vos travaux ?</strong>
+          <ul style="margin-top:8px; padding-left:18px;">
+            <li>Un seul interlocuteur pour coordonner les différents corps d’état</li>
+            <li>Des solutions adaptées à votre budget et à votre maison</li>
+            <li>Des propositions claires, chiffrées et expliquées</li>
+            <li>Un accompagnement du premier rendez-vous à la réception du chantier</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- RÉALISATIONS -->
+    <section id="realisations">
+      <div class="container">
+        <div class="realisations-card">
+          <div class="realisations-header">
+            <div>
+              <h2 class="section-title" style="margin-bottom:4px;">Nos réalisations</h2>
+              <p class="section-subtitle" style="margin-bottom:0;">
+                Quelques exemples de chantiers réalisés sur la presqu'île guérandaise.
+              </p>
+            </div>
+            <div class="realisations-controls">
+              <button type="button" onclick="prevRealisation()">❮</button>
+              <button type="button" onclick="nextRealisation()">❯</button>
+            </div>
+          </div>
+
+          <div class="realisations-viewer" id="realisations-viewer">
+            Ajoutez ici vos photos avant / après (slide 1)
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AVIS CLIENTS -->
+    <section id="avis">
+      <div class="container">
+        <h2 class="section-title">Avis clients</h2>
+        <p class="section-subtitle">
+          Ils nous ont fait confiance pour leur projet de rénovation.
+        </p>
+
+        <div class="avis-grid">
+          <article class="avis-card">
+            <div class="avis-name">Julie M.</div>
+            <div class="stars">★★★★★</div>
+            <p>
+              Travail très professionnel et soigné. Je recommande vivement !
+            </p>
+          </article>
+
+          <article class="avis-card">
+            <div class="avis-name">Marc D.</div>
+            <div class="stars">★★★★☆</div>
+            <p>
+              Chantier bien mené, équipe réactive et à l'écoute.
+            </p>
+          </article>
+
+          <article class="avis-card">
+            <div class="avis-name">Sophie R.</div>
+            <div class="stars">★★★★★</div>
+            <p>
+              Un vrai partenaire pour notre rénovation énergétique.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container contact-grid">
+        <div>
+          <h2 class="section-title">Contactez-nous</h2>
+          <p class="section-subtitle">
+            Expliquez-nous votre projet, nous vous rappelons rapidement pour faire le point et vous proposer un devis.
+          </p>
+
+          <form onsubmit="handleSubmit(event)">
+            <div>
+              <label for="name">Nom / Prénom</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div>
+              <label for="phone">Téléphone</label>
+              <input type="tel" id="phone" name="phone" required />
+            </div>
+            <div>
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" />
+            </div>
+            <div>
+              <label for="message">Votre projet</label>
+              <textarea id="message" name="message" placeholder="Décrivez brièvement vos travaux (pièces concernées, surface, type de travaux...)"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Envoyer ma demande</button>
+          </form>
+          <div style="font-size:11px; color:var(--muted); margin-top:6px;">
+            Ce formulaire est un exemple : il faudra le connecter à votre adresse e-mail ou à un script côté serveur.
+          </div>
+        </div>
+
+        <aside class="contact-infos">
+          <div><strong>ABA RÉNOVATION</strong></div>
+          <div>📍 Herbignac – Presqu'île guérandaise (44)</div>
+          <div>📞 07 88 32 63 82</div>
+          <div>✉️ <a href="mailto:abarenovation44@gmail.com">abarenovation44@gmail.com</a></div>
+          <div style="margin-top:8px;">
+            <a href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a> •
+            <a href="https://wa.me/33788326382" target="_blank" rel="noopener">WhatsApp</a>
+          </div>
+          <div style="margin-top:10px; font-size:12px;">
+            Nous intervenons sur Herbignac, la presqu'île guérandaise et le secteur 44.
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>© 2025 ABA RÉNOVATION – Tous droits réservés</div>
+    <div class="footer-links">
+      <span>Herbignac (44)</span>
+      <span>Presqu'île guérandaise</span>
+      <span>Rénovation tous corps d'état</span>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll au contact
+    function scrollToContact() {
+      const section = document.getElementById('contact');
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
       }
-    });
-  }
-});
-</script></body>
+    }
+
+    // Menu mobile
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      if (!menu) return;
+      menu.style.display = menu.style.display === 'none' || menu.style.display === '' ? 'block' : 'none';
+    }
+
+    function closeMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      if (!menu) return;
+      menu.style.display = 'none';
+    }
+
+    // Simple "carrousel" texte pour les réalisations (à remplacer par des images plus tard)
+    const realisationsSlides = [
+      "Ajoutez ici vos photos avant / après (slide 1)",
+      "Rénovation de salle de bain – avant / après (slide 2)",
+      "Rénovation de pièce de vie – avant / après (slide 3)",
+      "Isolation & menuiseries – avant / après (slide 4)"
+    ];
+    let currentRealisation = 0;
+
+    function updateRealisationViewer() {
+      const viewer = document.getElementById('realisations-viewer');
+      if (viewer) {
+        viewer.textContent = realisationsSlides[currentRealisation];
+      }
+    }
+
+    function prevRealisation() {
+      currentRealisation = (currentRealisation - 1 + realisationsSlides.length) % realisationsSlides.length;
+      updateRealisationViewer();
+    }
+
+    function nextRealisation() {
+      currentRealisation = (currentRealisation + 1) % realisationsSlides.length;
+      updateRealisationViewer();
+    }
+
+    // Faux envoi de formulaire (à remplacer par une vraie intégration)
+    function handleSubmit(event) {
+      event.preventDefault();
+      alert("Merci ! Votre demande a bien été prise en compte (simulation). Il faudra connecter ce formulaire à votre e-mail côté serveur.");
+    }
+
+    // Init
+    updateRealisationViewer();
+  </script>
+</body>
 </html>
