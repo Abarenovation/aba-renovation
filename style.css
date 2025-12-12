@@ -220,5 +220,39 @@ input, select, textarea{
   border: 1px solid var(--border) !important;
   color: var(--text) !important;
   border-radius: 12px !important;
+/* ===============================
+   FOND GLOBAL BLEU FONCÉ
+=============================== */
+
+section,
+main,
+footer{
+  background: transparent !important;
 }
-*/
+
+/* Textes Tailwind clairs */
+.text-gray-600,
+.text-gray-700,
+.text-gray-500{
+  color: var(--muted) !important;
+}
+
+/* Titres */
+section h2,
+section h3,
+section h4{
+  color: var(--text) !important;
+  /* Cartes premium (remplace le blanc Tailwind) */
+.bg-white,
+.bg-gray-50,
+.bg-blue-50{
+  background: linear-gradient(
+    180deg,
+    rgba(15,37,58,.85),
+    rgba(15,37,58,.65)
+  ) !important;
+
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-soft) !important;
+}
