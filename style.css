@@ -19,33 +19,36 @@
   --container:1120px;
 }
 
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+
+/* Base (on laisse Tailwind gérer le reste, donc fond blanc) */
 body{
   margin:0;
   font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
-  color:#111827;              /* texte normal (Tailwind) */
-  background:#ffffff;         /* fond normal (Tailwind) */
+  color:#111827;
+  background:#ffffff;
 }
 
-/* Typo */
-h1,h2,h3{
-  font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Arial;
-  letter-spacing:-0.02em;
-  margin:0 0 .6rem 0;
-}
-h1{font-size:clamp(2.2rem, 4vw, 3.6rem); line-height:1.05}
-p{margin:.75rem 0; color:var(--muted); line-height:1.65}
-
-/* Container */
+/* Container pour le hero maquette */
 .container{
   max-width:var(--container);
   margin:0 auto;
   padding:0 20px;
 }
 
-/* Navbar premium */
+/* Titres (maquette) */
+.hero h1{
+  font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+  letter-spacing:-0.02em;
+  margin:0 0 .6rem 0;
+  font-size:clamp(2.2rem, 4vw, 3.8rem);
+  line-height:1.05;
+}
+
+/* =======================
+   NAVBAR PREMIUM (maquette)
+======================= */
 .navbar{
   position:fixed;
   top:0; left:0; right:0;
@@ -62,12 +65,21 @@ p{margin:.75rem 0; color:var(--muted); line-height:1.65}
   gap:18px;
 }
 .brand{
-  display:flex; align-items:center; gap:12px;
-  font-family:Poppins; font-weight:800;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-family:Poppins;
+  font-weight:800;
   letter-spacing:.02em;
+  color:rgba(245,247,250,.95);
+  text-decoration:none;
 }
-.brand img{height:34px; width:auto}
-.navlinks{display:flex; gap:26px; align-items:center}
+.brand img{ height:34px; width:auto; }
+.navlinks{
+  display:flex;
+  gap:26px;
+  align-items:center;
+}
 .navlinks a{
   color:rgba(245,247,250,.90);
   text-decoration:none;
@@ -75,116 +87,11 @@ p{margin:.75rem 0; color:var(--muted); line-height:1.65}
   font-size:.95rem;
   opacity:.92;
 }
-.navlinks a:hover{opacity:1}
+.navlinks a:hover{ opacity:1; }
 
-/* Hero */
-.hero{
-  padding:120px 0 80px;
-  position:relative;
-  overflow:hidden;
-}
-.hero::before{
-  content:"";
-  position:absolute; inset:0;
-  background:
-    linear-gradient(180deg, rgba(11,27,43,.45), rgba(11,27,43,.92)),
-    radial-gradient(900px 600px at 50% 10%, rgba(255,255,255,.10), transparent 55%);
-  pointer-events:none;
-}
-.hero::after{
-  content:"";
-  position:absolute; inset:-2px;
-  background-image:url("TON_IMAGE_HERO.jpg");
-  background-size:cover;
-  background-position:center;
-  filter:saturate(1.05) contrast(1.05);
-  z-index:-2;
-}
-.hero .content{
-  position:relative;
-  text-align:center;
-  padding-top:10px;
-}
-.kpis{
-  display:flex;
-  justify-content:center;
-  gap:14px;
-  flex-wrap:wrap;
-  margin-top:18px;
-  color:rgba(245,247,250,.92);
-}
-.kpis span{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  padding:8px 12px;
-  border:1px solid rgba(255,255,255,.12);
-  border-radius:999px;
-  background:rgba(15,37,58,.35);
-}
-
-/* Buttons */
-.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  height:52px;
-  padding:0 22px;
-  border-radius:var(--radius);
-  font-weight:800;
-  letter-spacing:.01em;
-  text-decoration:none;
-  border:1px solid transparent;
-  box-shadow:var(--shadow-soft);
-  transition:transform .12s ease, background .12s ease, border-color .12s ease, opacity .12s ease;
-  user-select:none;
-}
-.btn:active{transform:translateY(1px)}
-.btn-primary{
-  background:linear-gradient(180deg, rgba(243,106,29,1), rgba(216,90,22,1));
-  color:white;
-}
-.btn-primary:hover{opacity:.96}
-.btn-ghost{
-  background:rgba(15,37,58,.35);
-  border-color:rgba(255,255,255,.22);
-  color:var(--text);
-}
-.btn-ghost:hover{border-color:rgba(255,255,255,.32)}
-
-/* Sections + Cards */
-.section{padding:70px 0}
-.section-title{
-  text-align:center;
-  margin-bottom:28px;
-}
-.grid{
-  display:grid;
-  grid-template-columns:repeat(3, 1fr);
-  gap:18px;
-}
-.card{
-  background:linear-gradient(180deg, rgba(15,37,58,.78), rgba(15,37,58,.55));
-  border:1px solid var(--border);
-  border-radius:var(--radius-lg);
-  padding:18px;
-  box-shadow:var(--shadow-soft);
-}
-.card h3{font-size:1.15rem}
-.card p{margin:8px 0 0}
-
-/* Responsive */
-@media (max-width: 900px){
-  .navlinks{display:none;} /* si menu burger ensuite */
-  .grid{grid-template-columns:1fr;}
-  .hero{padding:110px 0 60px;}
-}
-
-/* ================================================== */
-/* HERO + NAVBAR — RENDU MAQUETTE (desktop + mobile)   */
-/* ================================================== */
-
+/* =======================
+   HERO PREMIUM (maquette)
+======================= */
 .hero{
   min-height:72vh;
   padding:140px 0 90px;
@@ -192,9 +99,9 @@ p{margin:.75rem 0; color:var(--muted); line-height:1.65}
   align-items:center;
   position:relative;
   overflow:hidden;
+  color:var(--text);
 }
 
-/* IMPORTANT : on utilise la variable --hero-img (depuis ton HTML) */
 .hero::after{
   content:"";
   position:absolute; inset:0;
@@ -215,7 +122,66 @@ p{margin:.75rem 0; color:var(--muted); line-height:1.65}
     linear-gradient(180deg, rgba(11,27,43,.35), rgba(11,27,43,.95));
 }
 
-.hero-sub{ max-width: 820px; margin: 18px auto 0; font-size: 1.1rem; }
+.hero .content{
+  text-align:center;
+  width:100%;
+}
+
+.hero-sub{
+  max-width:820px;
+  margin:18px auto 0;
+  font-size:1.1rem;
+  color:rgba(245,247,250,.82);
+}
+
+.kpis{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+.kpis span{
+  display:inline-flex;
+  align-items:center;
+  padding:8px 12px;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:999px;
+  background:rgba(15,37,58,.35);
+  color:rgba(245,247,250,.92);
+}
+
+/* Boutons maquette */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  height:52px;
+  padding:0 22px;
+  border-radius:var(--radius);
+  font-weight:800;
+  letter-spacing:.01em;
+  text-decoration:none;
+  border:1px solid transparent;
+  box-shadow:var(--shadow-soft);
+  transition:transform .12s ease, border-color .12s ease, opacity .12s ease;
+  user-select:none;
+}
+.btn:active{ transform:translateY(1px); }
+
+.btn-primary{
+  background:linear-gradient(180deg, rgba(243,106,29,1), rgba(216,90,22,1));
+  color:white;
+}
+.btn-primary:hover{ opacity:.96; }
+
+.btn-ghost{
+  background:rgba(15,37,58,.35);
+  border-color:rgba(255,255,255,.22);
+  color:var(--text);
+}
+.btn-ghost:hover{ border-color:rgba(255,255,255,.32); }
 
 .cta{
   margin-top:28px;
@@ -225,77 +191,39 @@ p{margin:.75rem 0; color:var(--muted); line-height:1.65}
   flex-wrap:wrap;
 }
 
+/* Responsive */
 @media (max-width: 900px){
+  .navlinks{ display:none; }
   .hero{ padding:120px 0 70px; }
-/* =========================================
-   SKIN PREMIUM A — SUR TOUTES LES SECTIONS
-   (à coller tout en bas de style.css)
-========================================= */
+}
 
-/* sections (écrase les bg Tailwind) */
+/* ===========================
+   (OPTION) SKIN PREMIUM GLOBAL
+   -> laisse commenté pour l’instant
+   (on l’activera quand tu valides)
+=========================== */
+/*
 #services, #moe, #realisations, #avis, #contact, footer{
   background: transparent !important;
 }
-
-section{
-  scroll-margin-top: 90px; /* pour que le menu fixe n’écrase pas les ancres */
-}
-
-/* titres/texte */
-section h2, section h3, section h4{
-  color: var(--text) !important;
-}
-section p, section li, section footer, .text-gray-600, .text-gray-700, .text-gray-500{
-  color: var(--muted) !important;
-}
-
-/* wrappers “blancs” => surface premium */
+section{ scroll-margin-top: 90px; }
+section h2, section h3, section h4{ color: var(--text) !important; }
+section p, section li, section footer,
+.text-gray-600, .text-gray-700, .text-gray-500{ color: var(--muted) !important; }
 .bg-white, .bg-gray-50, .bg-blue-50{
   background: linear-gradient(180deg, rgba(15,37,58,.78), rgba(15,37,58,.55)) !important;
   border: 1px solid var(--border) !important;
   box-shadow: var(--shadow-soft) !important;
   border-radius: var(--radius-lg) !important;
 }
-
-/* bordures Tailwind */
-.border, .border-t, .border-b, .border-l-8, .border-t-4{
-  border-color: var(--border) !important;
-}
-
-/* boutons Tailwind bleus => CTA orange */
+.border, .border-t, .border-b, .border-l-8, .border-t-4{ border-color: var(--border) !important; }
 .bg-blue-700{
   background: linear-gradient(180deg, rgba(243,106,29,1), rgba(216,90,22,1)) !important;
 }
-.bg-blue-700:hover{ opacity:.96 !important; }
-
-/* inputs / select / textarea */
 input, select, textarea{
   background: rgba(15,37,58,.35) !important;
   border: 1px solid var(--border) !important;
   color: var(--text) !important;
   border-radius: 12px !important;
-  outline: none !important;
 }
-input::placeholder, textarea::placeholder{ color: rgba(184,196,209,.75) !important; }
-input:focus, select:focus, textarea:focus{
-  border-color: rgba(243,106,29,.55) !important;
-  box-shadow: 0 0 0 4px rgba(243,106,29,.15) !important;
-}
-
-/* Swiper flèches/pagination plus “premium” */
-.swiper-button-prev, .swiper-button-next{
-  color: rgba(245,247,250,.85) !important;
-}
-.swiper-pagination-bullet{
-  background: rgba(245,247,250,.35) !important;
-  opacity: 1 !important;
-}
-.swiper-pagination-bullet-active{
-  background: rgba(243,106,29,1) !important;
-body { outline: 8px solid hotpink !important; }
-}
-/* Espacement général (plus “maquette”) */
-#services, #moe, #realisations, #avis, #contact{
-  padding-top: 80px !important;
-  padding-bottom: 80px !important;
-}
+*/
