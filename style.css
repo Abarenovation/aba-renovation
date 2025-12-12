@@ -18,25 +18,21 @@
 
   --container:1120px;
 
-  /* 🟧 Correction ajoutée */
+  /* Image du HERO */
   --hero-img: url("https://i.ibb.co/b5jgsmtK/renovation-interieur.jpg");
 }
 
 *{ box-sizing:border-box; }
 html,body{ height:100%; }
 
-/* BASE + IMAGE DE FOND (imgbb) */
+/* BASE — image du body supprimée */
 body{
   margin:0;
   font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
   color: var(--text);
 
-  background:
-    linear-gradient(rgba(11,27,43,0.88), rgba(11,27,43,0.88)),
-    url("https://i.ibb.co/b5jgsmtK/renovation-interieur.jpg");
-
-  background-size: cover;
-  background-position: center;
+  /* On ne garde qu’un fond uni */
+  background: var(--bg);
   background-attachment: fixed;
 }
 
@@ -200,8 +196,7 @@ body{
 }
 
 /* ===============================
-   SKIN PREMIUM GLOBAL (ACTIF)
-   -> enlève les fonds gris/blanc Tailwind
+   SKIN PREMIUM GLOBAL
 =============================== */
 section, main, footer{
   background: transparent !important;
@@ -209,17 +204,14 @@ section, main, footer{
 
 section{ scroll-margin-top: 90px; }
 
-/* textes Tailwind */
 .text-gray-600, .text-gray-700, .text-gray-500{
   color: var(--muted) !important;
 }
 
-/* titres */
 section h2, section h3, section h4{
   color: var(--text) !important;
 }
 
-/* cartes (remplace bg-white/bg-gray-50/bg-blue-50) */
 .bg-white, .bg-gray-50, .bg-blue-50{
   background: linear-gradient(180deg, rgba(15,37,58,.85), rgba(15,37,58,.65)) !important;
   border: 1px solid var(--border) !important;
@@ -227,18 +219,15 @@ section h2, section h3, section h4{
   box-shadow: var(--shadow-soft) !important;
 }
 
-/* bordures Tailwind */
 .border, .border-t, .border-b, .border-l-8, .border-t-4{
   border-color: var(--border) !important;
 }
 
-/* bouton Tailwind bleu => orange ABA */
 .bg-blue-700{
   background:linear-gradient(180deg, rgba(243,106,29,1), rgba(216,90,22,1)) !important;
 }
 .bg-blue-700:hover{ opacity:.96 !important; }
 
-/* inputs */
 input, select, textarea{
   background: rgba(15,37,58,.35) !important;
   border: 1px solid var(--border) !important;
