@@ -180,4 +180,42 @@ p{margin:.75rem 0; color:var(--muted); line-height:1.65}
   .navlinks{display:none;} /* si menu burger ensuite */
   .grid{grid-template-columns:1fr;}
   .hero{padding:110px 0 60px;}
+  .hero{
+  padding:140px 0 90px;
+  position:relative;
+  overflow:hidden;
+  min-height: 72vh;
+  display:flex;
+  align-items:center;
+}
+
+.hero::after{
+  content:"";
+  position:absolute; inset:0;
+  background-image: var(--hero-img);
+  background-size:cover;
+  background-position:center;
+  z-index:-2;
+  transform: scale(1.03);
+  filter: saturate(1.05) contrast(1.05);
+}
+
+.hero::before{
+  content:"";
+  position:absolute; inset:0;
+  z-index:-1;
+  background:
+    radial-gradient(900px 600px at 50% 20%, rgba(255,255,255,.10), transparent 60%),
+    linear-gradient(180deg, rgba(11,27,43,.35), rgba(11,27,43,.92));
+}
+
+.hero .content{ text-align:center; }
+.hero-sub{ max-width: 820px; margin: 18px auto 0; font-size: 1.1rem; }
+
+.cta{
+  margin-top:28px;
+  display:flex;
+  justify-content:center;
+  gap:16px;
+  flex-wrap:wrap;
 }
