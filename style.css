@@ -26,13 +26,18 @@
 html,body{ height:100%; }
 
 /* BASE — image supprimée */
-body{
-  margin:0;
-  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial;
   color: var(--text);
-  background: #0B1B2B; /* couleur seule */
-}
 
+  /* Image de fond */
+  background: 
+    linear-gradient(rgba(11,27,43,0.6), rgba(11,27,43,0.6)), /* filtre sombre */
+    url("https://i.ibb.co/b5jgsmtK/renovation-interieur.jpg") no-repeat center center fixed;
+
+  background-size: cover;
+}
 .container{
   max-width:var(--container);
   margin:0 auto;
