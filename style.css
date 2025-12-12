@@ -18,20 +18,19 @@
 
   --container:1120px;
 
-  /* Image du HERO */
-  --hero-img: url("https://i.ibb.co/b5jgsmtK/renovation-interieur.jpg");
+  /* aucune image */
+  --hero-img: none;
 }
 
 *{ box-sizing:border-box; }
 html,body{ height:100%; }
 
-/* BASE — image du body supprimée */
+/* BASE — image supprimée */
 body{
   margin:0;
   font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
   color: var(--text);
 
-  /* On ne garde qu’un fond uni */
   background: var(--bg);
   background-attachment: fixed;
 }
@@ -106,15 +105,12 @@ body{
   color:var(--text);
 }
 
+/* HERO sans image */
 .hero::after{
   content:"";
   position:absolute; inset:0;
-  background-image: var(--hero-img);
-  background-size:cover;
-  background-position:center;
+  background:none;
   z-index:-2;
-  transform: scale(1.03);
-  filter: saturate(1.05) contrast(1.05);
 }
 
 .hero::before{
@@ -122,7 +118,7 @@ body{
   position:absolute; inset:0;
   z-index:-1;
   background:
-    radial-gradient(900px 600px at 50% 20%, rgba(255,255,255,.10), transparent 60%),
+    radial-gradient(900px 600px at 50% 20%, rgba(255,255,255,.08), transparent 60%),
     linear-gradient(180deg, rgba(11,27,43,.35), rgba(11,27,43,.95));
 }
 
