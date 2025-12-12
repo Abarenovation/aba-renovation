@@ -26,17 +26,12 @@ html,body{ height:100%; }
 body{
   margin:0;
   font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
-  color:#111827;
-  background:#ffffff;
+  color: var(--text);
+  background:
+    radial-gradient(1200px 600px at 20% 10%, rgba(243,106,29,.12), transparent 60%),
+    radial-gradient(900px 500px at 80% 30%, rgba(120,170,255,.10), transparent 55%),
+    var(--bg);
 }
-
-/* Container pour le hero maquette */
-.container{
-  max-width:var(--container);
-  margin:0 auto;
-  padding:0 20px;
-}
-
 /* Titres (maquette) */
 .hero h1{
   font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Arial;
