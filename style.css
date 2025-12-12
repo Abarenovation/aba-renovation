@@ -20,15 +20,9 @@
 }
 
 *{ box-sizing:border-box; }
-html,body{ height:100%; }
+html,body{ height:100%; margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial; color: var(--text); }
 
-body {
-  margin: 0;
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-  color: var(--text);
-  background: #0B1B2B;
-}
-
+/* CONTAINER */
 .container{
   max-width:var(--container);
   margin:0 auto;
@@ -36,35 +30,31 @@ body {
 }
 
 /* HERO PREMIUM */
-.hero {
-  min-height: 72vh;
-  padding: 140px 0 90px;
-  display: flex;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-  color: var(--text);
-
-  /* IMAGE DE FOND */
-  background: 
-    linear-gradient(rgba(11,27,43,0.6), rgba(11,27,43,0.6)),
-    url("https://i.ibb.co/b5jgsmtK/renovation-interieur.jpg") no-repeat center center;
-  background-size: cover;
+.hero{
+  min-height:72vh;
+  padding:140px 0 90px;
+  display:flex;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+  color:var(--text);
 }
 
-/* On supprime l'ancien ::after qui bloquait l'image */
-.hero::after{
-  content: none;
-}
-
+/* Image + overlay */
 .hero::before{
   content:"";
   position:absolute;
   inset:0;
   z-index:-1;
   background:
-    radial-gradient(900px 600px at 50% 20%, rgba(255,255,255,.08), transparent 60%),
-    linear-gradient(180deg, rgba(11,27,43,.35), rgba(11,27,43,.95));
+    linear-gradient(rgba(11,27,43,0.6), rgba(11,27,43,0.6)),
+    url("https://i.ibb.co/b5jgsmtK/renovation-interieur.jpg") no-repeat center center;
+  background-size: cover;
+}
+
+/* Supprimer ::after */
+.hero::after{
+  content:none;
 }
 
 .hero .content{
@@ -75,7 +65,7 @@ body {
 .hero h1{
   font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Arial;
   letter-spacing:-0.02em;
-  margin:0 0 0.6rem 0;
+  margin:0 0 .6rem 0;
   font-size:clamp(2.2rem, 4vw, 3.8rem);
   line-height:1.05;
 }
@@ -177,7 +167,7 @@ body {
 }
 .navlinks a:hover{ opacity:1; }
 
-/* SKIN PREMIUM GLOBAL */
+/* SKIN GLOBAL */
 section, main, footer{
   background: transparent !important;
 }
@@ -228,3 +218,4 @@ input:focus, select:focus, textarea:focus{
   .navlinks{ display:none; }
   .hero{ padding:120px 0 70px; }
 }
+
