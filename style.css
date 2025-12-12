@@ -228,4 +228,75 @@ p{margin:.75rem 0; color:var(--muted); line-height:1.65}
 
 @media (max-width: 900px){
   .hero{ padding:120px 0 70px; }
+/* =========================================
+   SKIN PREMIUM A — SUR TOUTES LES SECTIONS
+   (à coller tout en bas de style.css)
+========================================= */
+
+/* sections (écrase les bg Tailwind) */
+#services, #moe, #realisations, #avis, #contact, footer{
+  background: transparent !important;
+}
+
+section{
+  scroll-margin-top: 90px; /* pour que le menu fixe n’écrase pas les ancres */
+}
+
+/* titres/texte */
+section h2, section h3, section h4{
+  color: var(--text) !important;
+}
+section p, section li, section footer, .text-gray-600, .text-gray-700, .text-gray-500{
+  color: var(--muted) !important;
+}
+
+/* wrappers “blancs” => surface premium */
+.bg-white, .bg-gray-50, .bg-blue-50{
+  background: linear-gradient(180deg, rgba(15,37,58,.78), rgba(15,37,58,.55)) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow-soft) !important;
+  border-radius: var(--radius-lg) !important;
+}
+
+/* bordures Tailwind */
+.border, .border-t, .border-b, .border-l-8, .border-t-4{
+  border-color: var(--border) !important;
+}
+
+/* boutons Tailwind bleus => CTA orange */
+.bg-blue-700{
+  background: linear-gradient(180deg, rgba(243,106,29,1), rgba(216,90,22,1)) !important;
+}
+.bg-blue-700:hover{ opacity:.96 !important; }
+
+/* inputs / select / textarea */
+input, select, textarea{
+  background: rgba(15,37,58,.35) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+  border-radius: 12px !important;
+  outline: none !important;
+}
+input::placeholder, textarea::placeholder{ color: rgba(184,196,209,.75) !important; }
+input:focus, select:focus, textarea:focus{
+  border-color: rgba(243,106,29,.55) !important;
+  box-shadow: 0 0 0 4px rgba(243,106,29,.15) !important;
+}
+
+/* Swiper flèches/pagination plus “premium” */
+.swiper-button-prev, .swiper-button-next{
+  color: rgba(245,247,250,.85) !important;
+}
+.swiper-pagination-bullet{
+  background: rgba(245,247,250,.35) !important;
+  opacity: 1 !important;
+}
+.swiper-pagination-bullet-active{
+  background: rgba(243,106,29,1) !important;
+}
+
+/* Espacement général (plus “maquette”) */
+#services, #moe, #realisations, #avis, #contact{
+  padding-top: 80px !important;
+  padding-bottom: 80px !important;
 }
