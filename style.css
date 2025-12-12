@@ -17,6 +17,9 @@
   --shadow-soft:0 10px 24px rgba(0,0,0,.25);
 
   --container:1120px;
+
+  /* 🟧 Correction ajoutée */
+  --hero-img: url("https://i.ibb.co/b5jgsmtK/renovation-interieur.jpg");
 }
 
 *{ box-sizing:border-box; }
@@ -256,3 +259,4 @@ input:focus, select:focus, textarea:focus{
   .navlinks{ display:none; }
   .hero{ padding:120px 0 70px; }
 }
+
