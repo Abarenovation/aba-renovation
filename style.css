@@ -30,9 +30,7 @@ body{
   margin:0;
   font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
   color: var(--text);
-
-  background: var(--bg);
-  background-attachment: fixed;
+  background: #0B1B2B; /* couleur seule */
 }
 
 .container{
