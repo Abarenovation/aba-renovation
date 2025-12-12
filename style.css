@@ -293,8 +293,8 @@ input:focus, select:focus, textarea:focus{
 }
 .swiper-pagination-bullet-active{
   background: rgba(243,106,29,1) !important;
+body { outline: 8px solid hotpink !important; }
 }
-
 /* Espacement général (plus “maquette”) */
 #services, #moe, #realisations, #avis, #contact{
   padding-top: 80px !important;
