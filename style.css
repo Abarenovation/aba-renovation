@@ -22,23 +22,25 @@
 *{ box-sizing:border-box; }
 html,body{ height:100%; }
 
-/* Base (on laisse Tailwind gérer le reste, donc fond blanc) */
+/* BASE + IMAGE DE FOND (imgbb) */
 body{
   margin:0;
   font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
   color: var(--text);
 
-  /* IMAGE DE FOND (imgbb) + overlay bleu foncé */
   background:
-    linear-gradient(
-      rgba(11,27,43,0.88),
-      rgba(11,27,43,0.88)
-    ),
+    linear-gradient(rgba(11,27,43,0.88), rgba(11,27,43,0.88)),
     url("https://i.ibb.co/b5jgsmtK/renovation-interieur.jpg");
 
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+}
+
+.container{
+  max-width:var(--container);
+  margin:0 auto;
+  padding:0 20px;
 }
 
 .hero h1{
@@ -50,7 +52,7 @@ body{
 }
 
 /* =======================
-   NAVBAR PREMIUM (maquette)
+   NAVBAR PREMIUM
 ======================= */
 .navbar{
   position:fixed;
@@ -93,7 +95,7 @@ body{
 .navlinks a:hover{ opacity:1; }
 
 /* =======================
-   HERO PREMIUM (maquette)
+   HERO PREMIUM
 ======================= */
 .hero{
   min-height:72vh;
@@ -154,7 +156,7 @@ body{
   color:rgba(245,247,250,.92);
 }
 
-/* Boutons maquette */
+/* BOUTONS */
 .btn{
   display:inline-flex;
   align-items:center;
@@ -194,73 +196,63 @@ body{
   flex-wrap:wrap;
 }
 
-/* Responsive */
-@media (max-width: 900px){
-  .navlinks{ display:none; }
-  .hero{ padding:120px 0 70px; }
-}
-
-/* ===========================
-   (OPTION) SKIN PREMIUM GLOBAL
-   -> laisse commenté pour l’instant
-   (on l’activera quand tu valides)
-=========================== */
-/*
-#services, #moe, #realisations, #avis, #contact, footer{
+/* ===============================
+   SKIN PREMIUM GLOBAL (ACTIF)
+   -> enlève les fonds gris/blanc Tailwind
+=============================== */
+section, main, footer{
   background: transparent !important;
 }
+
 section{ scroll-margin-top: 90px; }
-section h2, section h3, section h4{ color: var(--text) !important; }
-section p, section li, section footer,
-.text-gray-600, .text-gray-700, .text-gray-500{ color: var(--muted) !important; }
+
+/* textes Tailwind */
+.text-gray-600, .text-gray-700, .text-gray-500{
+  color: var(--muted) !important;
+}
+
+/* titres */
+section h2, section h3, section h4{
+  color: var(--text) !important;
+}
+
+/* cartes (remplace bg-white/bg-gray-50/bg-blue-50) */
 .bg-white, .bg-gray-50, .bg-blue-50{
-  background: linear-gradient(180deg, rgba(15,37,58,.78), rgba(15,37,58,.55)) !important;
+  background: linear-gradient(180deg, rgba(15,37,58,.85), rgba(15,37,58,.65)) !important;
   border: 1px solid var(--border) !important;
-  box-shadow: var(--shadow-soft) !important;
   border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-soft) !important;
 }
-.border, .border-t, .border-b, .border-l-8, .border-t-4{ border-color: var(--border) !important; }
+
+/* bordures Tailwind */
+.border, .border-t, .border-b, .border-l-8, .border-t-4{
+  border-color: var(--border) !important;
+}
+
+/* bouton Tailwind bleu => orange ABA */
 .bg-blue-700{
-  background: linear-gradient(180deg, rgba(243,106,29,1), rgba(216,90,22,1)) !important;
+  background:linear-gradient(180deg, rgba(243,106,29,1), rgba(216,90,22,1)) !important;
 }
+.bg-blue-700:hover{ opacity:.96 !important; }
+
+/* inputs */
 input, select, textarea{
   background: rgba(15,37,58,.35) !important;
   border: 1px solid var(--border) !important;
   color: var(--text) !important;
   border-radius: 12px !important;
-/* ===============================
-   FOND GLOBAL BLEU FONCÉ
-=============================== */
-
-section,
-main,
-footer{
-  background: transparent !important;
+  outline: none !important;
+}
+input::placeholder, textarea::placeholder{
+  color: rgba(184,196,209,.75) !important;
+}
+input:focus, select:focus, textarea:focus{
+  border-color: rgba(243,106,29,.55) !important;
+  box-shadow: 0 0 0 4px rgba(243,106,29,.15) !important;
 }
 
-/* Textes Tailwind clairs */
-.text-gray-600,
-.text-gray-700,
-.text-gray-500{
-  color: var(--muted) !important;
-}
-
-/* Titres */
-section h2,
-section h3,
-section h4{
-  color: var(--text) !important;
-  /* Cartes premium (remplace le blanc Tailwind) */
-.bg-white,
-.bg-gray-50,
-.bg-blue-50{
-  background: linear-gradient(
-    180deg,
-    rgba(15,37,58,.85),
-    rgba(15,37,58,.65)
-  ) !important;
-
-  border: 1px solid var(--border) !important;
-  border-radius: var(--radius-lg) !important;
-  box-shadow: var(--shadow-soft) !important;
+/* responsive */
+@media (max-width: 900px){
+  .navlinks{ display:none; }
+  .hero{ padding:120px 0 70px; }
 }
