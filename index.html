@@ -386,7 +386,13 @@
         </div>
       </div>
 
-      <form id="devis" class="p-6 border rounded-lg" onsubmit="submitForm(event)">
+      <form id="devis" class="p-6 border rounded-lg"
+      action="https://formspree.io/f/TON_ID"
+      method="POST">
+        <input type="hidden" name="_subject" value="Nouvelle demande de devis – ABA Rénovation">
+        <input type="hidden" name="_replyto" value="">
+        <input type="hidden" name="_next" value="https://www.abarenovation.com/merci.html">
+
         <h4 class="font-semibold">Demander un devis</h4>
         <p class="text-sm text-gray-600 mt-1">Formulaire simple — nous reviendrons vers vous rapidement.</p>
         <div class="mt-4 grid grid-cols-1 gap-3">
