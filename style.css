@@ -247,4 +247,44 @@ input:focus, select:focus, textarea:focus{
 @media (max-width: 900px){
   .navlinks{ display:none; }
   .hero{ padding:120px 0 70px; }
+  /* ===== Fix centrage navbar ===== */
+.navbar{
+  width:100%;
+}
+
+/* IMPORTANT : on centre le container de la navbar comme le site */
+.navbar .container{
+  max-width: 1200px;     /* mets la même valeur que tes sections (ex: 1152, 1280, 1400) */
+  margin: 0 auto;
+  padding-left: 16px;
+  padding-right: 16px;
+  box-sizing: border-box;
+}
+
+/* Empêche les petits décalages */
+.row{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  box-sizing:border-box;
+}
+
+/* Stack brand + menu */
+.brandblock{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+/* À droite : réseaux + burger */
+.righttools{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+/* Option : si ta navbar est sticky/fixed, évite les débords */
+.navbar *{
+  box-sizing:border-box;
 }
