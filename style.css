@@ -328,5 +328,13 @@ input:focus, select:focus, textarea:focus{
 .navbar *{
   box-sizing:border-box;
   .navbar { background: red !important; }
-
-}
+ /* =======================
+   CONTAINER SITE (ANTI TAILWIND)
+======================= */
+.site-container{
+  max-width: var(--container); /* 1120px chez toi */
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+  box-sizing: border-box;
+}}
