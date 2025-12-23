@@ -64,7 +64,7 @@
         .sidebar:hover { width: 280px; box-shadow: 10px 0 40px rgba(0,0,0,0.05); }
         .sidebar-logo { height: 100px; width: 100%; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0 15px; }
         .sidebar-logo h2 { font-weight: 900; color: var(--corp-blue); white-space: nowrap; transition: transform 0.3s; }
-        .sidebar:not(:hover) .sidebar-logo h2 { transform: rotate(-90deg); font-size: 1rem; letter-spacing: 2px; }
+        .sidebar:not(:hover) .sidebar-logo h2 { transform: rotate(-90deg); font-size: 1.1rem; }
 
         .nav-item { width: calc(100% - 24px); height: 56px; display: flex; align-items: center; justify-content: center; color: #64748b; transition: all 0.3s; cursor: pointer; border-radius: 16px; margin-bottom: 8px; }
         .sidebar:hover .nav-item { justify-content: flex-start; padding-left: 20px; }
@@ -86,87 +86,57 @@
         .block-overlay { position: absolute; inset: 0; z-index: 2; background: linear-gradient(to top, rgba(15,23,42,1) 0%, rgba(15,23,42,0.5) 50%, transparent 100%); }
         .block-content { position: relative; z-index: 10; height: 100%; padding: 40px; display: flex; flex-direction: column; justify-content: flex-end; }
 
-        /* --- INNOVATIVE HERO CASE --- */
-        .hero-case {
-            height: 600px;
-            background-color: #020617;
-            border-radius: 4rem;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 40px 80px -20px rgba(0, 78, 152, 0.4);
-        }
-        .hero-img-bg {
-            position: absolute; inset: 0; width: 100%; height: 100%;
-            object-fit: cover; opacity: 0.6; mix-blend-mode: soft-light;
-            transition: transform 10s linear;
-        }
-        .hero-case:hover .hero-img-bg { transform: scale(1.1); }
-        
-        .hero-glass-v5 {
-            position: relative; z-index: 10;
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(30px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 4rem;
-            padding: 4rem 2rem;
-            width: 88%;
-            max-width: 520px;
-            text-align: center;
-            box-shadow: 0 50px 100px -20px rgba(0,0,0,0.6);
-            overflow: hidden;
-        }
-        
-        /* Sweep animation over glass */
-        .hero-glass-v5::after {
-            content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
-            background: linear-gradient(to right, transparent, rgba(255,255,255,0.05), transparent);
-            transform: skewX(-25deg);
-            animation: lightSweep 4s infinite;
-        }
-        @keyframes lightSweep { 0% { left: -100%; } 100% { left: 200%; } }
-
+        /* --- HERO CASE --- */
+        .hero-case { height: 600px; background-color: #0f172a; border-radius: 4rem; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: transform 10s linear; }
+        .hero-case:hover .hero-img { transform: scale(1.1); }
+        .hero-glass-v3 { position: relative; z-index: 10; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 3.5rem; padding: 4rem 2rem; width: 90%; max-width: 500px; text-align: center; box-shadow: 0 40px 100px rgba(0,0,0,0.5); animation: float-hero 6s infinite ease-in-out; }
+        @keyframes float-hero { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
         .hero-aba-title { font-size: 6rem; font-weight: 950; color: white; line-height: 0.8; margin-bottom: 10px; letter-spacing: -4px; }
-        .hero-aba-sub { font-size: 1.5rem; font-weight: 800; color: var(--contact-blue); text-transform: uppercase; letter-spacing: 14px; margin-right: -14px; margin-bottom: 2.5rem; }
+        .hero-aba-sub { font-size: 1.4rem; font-weight: 800; color: #3b82f6; text-transform: uppercase; letter-spacing: 12px; margin-right: -12px; margin-bottom: 2rem; }
 
-        .hero-btn-modern {
-            background: white; color: var(--deep-dark); padding: 18px 45px; border-radius: 99px;
-            font-weight: 900; text-transform: uppercase; letter-spacing: 2px; font-size: 0.75rem;
-            box-shadow: 0 10px 30px rgba(255,255,255,0.15);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: inline-flex; align-items: center; gap: 12px;
-        }
-        .hero-btn-modern:hover { transform: scale(1.05) translateY(-3px); background: var(--contact-blue); color: white; }
-
-        /* GRID EXPERTISES */
+        /* GRID MINI EXPERTISES */
         .expertises-grid-dashboard { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 30px; }
         .exp-card-dash { background: #f8fafc; padding: 20px; border-radius: 2rem; text-align: center; transition: all 0.3s; border: 1px solid transparent; }
         .exp-card-dash i { color: var(--corp-blue); font-size: 1.5rem; margin-bottom: 10px; }
         .exp-card-dash span { font-size: 0.6rem; font-weight: 900; text-transform: uppercase; color: #475569; display: block; line-height: 1.1; }
 
         /* CASE BRAND ABA RÉNOVATION */
-        .brand-block { background-color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px; text-align: center; }
-        .brand-logo-container { width: 100%; height: 180px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
-        .brand-logo-img { max-width: 240px; max-height: 100%; object-fit: contain; }
+        .brand-block { background-color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 50px; text-align: center; }
+        .brand-logo-img { max-width: 260px; height: auto; transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .brand-block:hover .brand-logo-img { transform: scale(1.1); }
 
-        /* --- CLEAN GOOGLE BADGE --- */
-        .google-badge-premium {
+        /* --- PRENIUM GOOGLE PILL --- */
+        .google-pill-premium {
             background: white; border-radius: 99px; padding: 12px 24px;
             display: flex; align-items: center; gap: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             border: 1px solid #f1f5f9;
             transition: all 0.3s;
             text-decoration: none;
         }
-        .google-badge-premium:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.15); border-color: #4285F4; }
-        .google-icon-box { width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; }
-        .google-text-box { display: flex; flex-direction: column; line-height: 1; }
-        .google-rating-val { font-weight: 900; font-size: 1rem; color: #1e293b; }
-        .google-stars { color: #fbbf24; font-size: 0.65rem; margin-top: 3px; letter-spacing: 1px; }
+        .google-pill-premium:hover { transform: translateY(-5px); border-color: #4285F4; }
+        .google-icon-svg { width: 24px; height: 24px; }
+        .google-pill-text { display: flex; flex-direction: column; line-height: 1.1; }
+        .google-pill-rating { font-weight: 900; font-size: 1rem; color: #1e293b; }
+        .google-pill-stars { color: #fbbf24; font-size: 0.65rem; letter-spacing: 1px; }
 
-        /* --- IMMERSIVE UI --- */
+        /* --- UI ELEMENTS PAGES DÉTAILLÉES --- */
+        .back-btn-ui { position: fixed; top: 30px; left: 30px; z-index: 100; background: white; color: var(--corp-dark); padding: 12px 24px; border-radius: 99px; font-weight: 800; text-transform: uppercase; font-size: 0.75rem; border: 1px solid #e2e8f0; transition: all 0.3s; cursor: pointer; box-shadow: 0 10px 25px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 8px; }
+        .back-btn-ui:hover { transform: translateX(5px); color: var(--corp-blue); border-color: var(--corp-blue); }
+        
+        .page-header { height: 350px; border-radius: 0 0 4rem 4rem; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; text-align: center; margin-bottom: 60px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .content-card { max-width: 1000px; margin: 0 auto 32px auto; background: white; padding: 50px; border-radius: 3.5rem; box-shadow: 0 15px 40px rgba(0,0,0,0.02); border: 1px solid #f1f5f9; }
+
+        /* MASONRY */
+        .masonry { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); grid-auto-rows: 350px; gap: 30px; padding: 40px; max-width: 1400px; margin: 0 auto; }
+        .masonry-item { position: relative; border-radius: 3.5rem; overflow: hidden; background: #e2e8f0; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .masonry-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s; }
+        .masonry-item:hover img { transform: scale(1.1); }
+        .masonry-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%); opacity: 0; transition: opacity 0.4s; display: flex; align-items: flex-end; padding: 40px; }
+        .masonry-item:hover .masonry-overlay { opacity: 1; }
+
+        /* CHATBOT */
         .immersive-ui { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(30px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 3.5rem; height: 700px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 50px 100px rgba(0,0,0,0.8); position: relative; }
         .immersive-header { padding: 25px 40px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
         .immersive-messages { flex: 1; padding: 40px; overflow-y: auto; display: flex; flex-direction: column; gap: 20px; scroll-behavior: smooth; }
@@ -178,12 +148,36 @@
         .ui-opt-btn { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 15px; border-radius: 1.5rem; text-align: center; color: white; font-weight: 700; font-size: 0.8rem; cursor: pointer; transition: all 0.3s; }
         .ui-opt-btn:hover { background: rgba(255, 255, 255, 0.1); border-color: white; }
 
-        .classic-form { background: white; border-radius: 3rem; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid #f1f5f9; }
-        .form-input { width: 100%; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 1.5rem; padding: 15px 20px; margin-bottom: 15px; outline: none; transition: border-color 0.3s; font-size: 0.9rem; }
+        /* --- NOUVEAU STYLE FORMULAIRE CONTACT --- */
+        .classic-form { 
+            background: white; border-radius: 3.5rem; padding: 50px; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05); border: 1px solid #f1f5f9;
+        }
+        .form-group { margin-bottom: 25px; position: relative; }
+        .form-group i { 
+            position: absolute; left: 24px; top: 50%; transform: translateY(-50%); 
+            color: var(--contact-blue); font-size: 1.1rem; pointer-events: none;
+        }
+        .form-group textarea + i { top: 24px; transform: none; }
+        .form-input { 
+            width: 100%; background: #f8fafc; border: 2px solid #f1f5f9; border-radius: 1.5rem; 
+            padding: 18px 24px 18px 60px; outline: none; transition: all 0.3s; 
+            font-size: 0.95rem; color: var(--corp-dark); font-weight: 500;
+        }
+        .form-input:focus { border-color: var(--contact-blue); background: white; box-shadow: 0 10px 20px rgba(59, 130, 246, 0.05); }
+        .form-input::placeholder { color: #94a3b8; }
+        .submit-btn-premium {
+            width: 100%; background: var(--corp-blue); color: white; border-radius: 99px;
+            padding: 20px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px;
+            font-size: 0.8rem; display: flex; align-items: center; justify-content: center; gap: 12px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0, 78, 152, 0.2);
+        }
+        .submit-btn-premium:hover { transform: scale(1.02) translateY(-3px); background: var(--contact-blue); box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3); }
 
         /* FLOATING ACTIONS */
-        .floating-container { position: fixed; bottom: 24px; right: 24px; z-index: 100; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
-        .fab-round { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 22px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); transition: all 0.3s; cursor: pointer; }
+        .floating-container { position: fixed; bottom: 24px; right: 24px; z-index: 100; display: flex; flex-direction: column; align-items: flex-end; gap: 15px; }
+        .fab-round { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 22px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); transition: all 0.3s; cursor: pointer; }
         .fab-round:hover { transform: scale(1.1); }
         .fab-whatsapp { background-color: #25D366; }
         .fab-instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
@@ -194,9 +188,10 @@
             .sidebar.open { transform: translateX(0); }
             .main-content { margin-left: 0; }
             .hero-aba-title { font-size: 4rem; }
-            .hero-glass-v5 { padding: 3rem 1.5rem; width: 92%; }
+            .hero-glass-v3 { padding: 3rem 1.5rem; width: 92%; }
             .expertises-grid-dashboard { grid-template-columns: repeat(2, 1fr); }
             .floating-container { bottom: 20px; right: 20px; }
+            .classic-form { padding: 30px; }
         }
     </style>
 </head>
@@ -243,31 +238,22 @@
         </div>
     </nav>
 
-    <!-- FLOATING ACTIONS (CLEAN GOOGLE BADGE) -->
+    <!-- FLOATING ACTIONS -->
     <div class="floating-container">
-        <!-- CLEAN GOOGLE BADGE -->
-        <a href="https://www.google.com/search?q=ABA+Renovation+Herbignac" target="_blank" class="google-badge-premium">
-            <div class="google-icon-box">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google">
-            </div>
-            <div class="google-text-box">
-                <span class="google-rating-val">Avis : 5.0</span>
-                <div class="google-stars">
+        <!-- PREMIUM GOOGLE BADGE -->
+        <a href="https://www.google.com/search?q=ABA+Renovation+Herbignac" target="_blank" class="google-pill-premium">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" class="google-icon-svg" alt="G">
+            <div class="google-pill-text">
+                <span class="google-pill-rating">Note : 5.0/5</span>
+                <div class="google-pill-stars">
                     <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 </div>
             </div>
         </a>
-
         <div class="flex gap-3">
-            <div class="fab-round fab-decennale" onclick="navigateTo('entreprise')">
-                <i class="fas fa-shield-alt"></i>
-            </div>
-            <a href="https://www.instagram.com/abarenovation/" target="_blank" class="fab-round fab-instagram">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://api.whatsapp.com/send/?phone=33788326382&text&type=phone_number&app_absent=0" target="_blank" class="fab-round fab-whatsapp">
-                <i class="fab fa-whatsapp"></i>
-            </a>
+            <div class="fab-round fab-decennale" onclick="navigateTo('entreprise')"><i class="fas fa-shield-alt"></i></div>
+            <a href="https://www.instagram.com/abarenovation/" target="_blank" class="fab-round fab-instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://api.whatsapp.com/send/?phone=33788326382&text&type=phone_number&app_absent=0" target="_blank" class="fab-round fab-whatsapp"><i class="fab fa-whatsapp"></i></a>
         </div>
     </div>
 
@@ -278,20 +264,17 @@
         <div id="home" class="page-section active">
             <div class="bento-container">
                 
-                <!-- CASE 1: INNOVATIVE HERO -->
+                <!-- CASE 1: HERO (DESIGN RESTAURÉ) -->
                 <div class="hero-case group" onclick="navigateTo('contact')">
-                    <img src="https://i.ibb.co/B5SDPJ2y/IMG-4289.jpg" class="hero-img-bg" alt="Chantier">
-                    <div class="hero-aurora"></div>
-                    
-                    <div class="hero-glass-v5">
+                    <img src="https://i.ibb.co/B5SDPJ2y/IMG-4289.jpg" class="hero-img" alt="Chantier">
+                    <div class="hero-glass-v3">
                         <h1 class="hero-aba-title">ABA</h1>
                         <div class="hero-aba-sub">Rénovation</div>
                         <p class="text-white/70 font-medium mb-10 text-sm leading-relaxed max-w-xs mx-auto">
-                            L'excellence d'une entreprise générale <br>
-                            pour vos projets de vie.
+                            L'expertise d'une entreprise générale <br> pour vos projets de vie.
                         </p>
-                        <div class="hero-btn-modern">
-                            Lancer mon projet <i class="fas fa-chevron-right ml-1"></i>
+                        <div class="px-10 py-4 bg-blue-600 text-white rounded-full font-black uppercase tracking-widest text-[10px] hover:bg-white hover:text-blue-900 transition-all shadow-xl inline-block">
+                            Lancer mon projet
                         </div>
                     </div>
                 </div>
@@ -312,7 +295,7 @@
                     </div>
                 </div>
 
-                <!-- ABA RÉNOVATION (LOGO INTEGRATED) -->
+                <!-- ABA RÉNOVATION BRAND CASE -->
                 <div onclick="navigateTo('entreprise')" class="bento-block brand-block group">
                     <div class="brand-logo-container">
                         <img src="https://i.ibb.co/DDjGB5xt/logo-aba-renovation.png" class="brand-logo-img" alt="Logo ABA">
@@ -361,105 +344,201 @@
             </div>
         </div>
 
-        <!-- 2. PAGE ABA RÉNOVATION (DÉTAILLÉE) -->
+        <!-- 2. PAGE ABA RÉNOVATION (DÉTAILLÉE ÉTOFFÉE) -->
         <div id="entreprise" class="page-section">
+            <div class="back-btn-ui" onclick="navigateTo('home')"><i class="fas fa-arrow-left"></i> Dashboard</div>
             <header class="page-header bg-slate-900">
-                <div class="back-btn-header" onclick="navigateTo('home')"><i class="fas fa-arrow-left mr-2"></i> Retour</div>
-                <h2 class="text-5xl font-black uppercase">Aba Rénovation</h2>
-                <p class="mt-4 text-blue-400 font-black uppercase tracking-widest">Herbignac & Presqu'île guérandaise</p>
+                <h2 class="text-6xl font-black uppercase tracking-tighter">Aba Rénovation</h2>
+                <p class="mt-4 text-blue-400 font-black uppercase tracking-widest text-sm">L'Artisanat de Proximité à Herbignac</p>
+            </header>
+            
+            <div class="px-6 space-y-12 pb-20">
+                <div class="content-card">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h3 class="text-3xl font-black uppercase mb-6 text-slate-800">Notre Engagement</h3>
+                            <p class="text-slate-600 leading-relaxed mb-6 italic font-bold">"Construire avec rigueur, rénover avec passion."</p>
+                            <p class="text-slate-600 leading-relaxed">
+                                Aba Rénovation est votre partenaire de confiance en Presqu'île guérandaise. En tant qu'entreprise générale, nous portons la responsabilité technique et juridique de chaque projet, de l'étude à la livraison finale. 
+                            </p>
+                        </div>
+                        <div class="bg-slate-50 p-10 rounded-[3rem] border border-slate-100 shadow-sm">
+                            <h4 class="font-black uppercase text-blue-600 text-sm mb-6 tracking-widest">Nos Piliers</h4>
+                            <div class="space-y-6">
+                                <div class="flex gap-4"><i class="fas fa-map-marker-alt text-blue-500 mt-1"></i><div><p class="font-bold text-slate-800 text-sm">Ancrage Local</p></div></div>
+                                <div class="flex gap-4"><i class="fas fa-handshake text-blue-500 mt-1"></i><div><p class="font-bold text-slate-800 text-sm">Transparence</p></div></div>
+                                <div class="flex gap-4"><i class="fas fa-shield-alt text-blue-500 mt-1"></i><div><p class="font-bold text-slate-800 text-sm">Garantie 10 ans</p></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="max-w-4xl mx-auto bg-blue-900 p-16 rounded-[4rem] text-white shadow-2xl relative overflow-hidden">
+                    <div class="relative z-10 flex flex-col md:flex-row gap-10 items-center">
+                        <div class="w-24 h-24 bg-blue-500 rounded-3xl flex items-center justify-center shrink-0 shadow-lg"><i class="fas fa-shield-alt text-4xl"></i></div>
+                        <div>
+                            <h3 class="text-3xl font-black uppercase mb-4 tracking-tight">Garantie Décennale Totale</h3>
+                            <p class="text-blue-100/70 leading-relaxed mb-6 text-lg">Votre sérénité est notre priorité. Tous nos travaux de gros œuvre et de structure sont couverts par une assurance décennale robuste protégeant votre patrimoine pour 10 ans.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. PAGE MAÎTRISE D'OEUVRE -->
+        <div id="maitrise" class="page-section">
+            <div class="back-btn-ui" onclick="navigateTo('home')"><i class="fas fa-arrow-left"></i> Dashboard</div>
+            <header class="page-header bg-blue-900">
+                <h2 class="text-6xl font-black uppercase tracking-tighter">Maîtrise d'œuvre</h2>
+                <p class="mt-4 text-blue-200 font-black uppercase tracking-widest text-sm italic">Le pilotage de votre projet de A à Z</p>
             </header>
             
             <div class="px-6 max-w-5xl mx-auto space-y-12 pb-20">
                 <div class="content-card text-center">
-                    <img src="https://i.ibb.co/DDjGB5xt/logo-aba-renovation.png" class="w-40 mx-auto mb-8" alt="Logo">
-                    <h3 class="text-2xl font-black uppercase mb-6 text-slate-800">L'Excellence de Proximité</h3>
-                    <p class="text-slate-600 leading-relaxed mb-10">Basée à Herbignac, Aba Rénovation combine la rigueur technique de l'artisanat traditionnel avec une gestion de projet innovante. Nous sommes votre partenaire privilégié pour tous vos travaux.</p>
-                    <div class="grid sm:grid-cols-3 gap-8">
-                        <div class="p-6 bg-slate-50 rounded-3xl"><i class="fas fa-check-circle text-blue-600 text-2xl mb-4"></i><h4 class="font-black uppercase text-xs">Technique</h4></div>
-                        <div class="p-6 bg-slate-50 rounded-3xl"><i class="fas fa-user-check text-blue-600 text-2xl mb-4"></i><h4 class="font-black uppercase text-xs">Écoute</h4></div>
-                        <div class="p-6 bg-slate-50 rounded-3xl"><i class="fas fa-shield-alt text-green-500 text-2xl mb-4"></i><h4 class="font-black uppercase text-xs">Protection</h4></div>
-                    </div>
+                    <h3 class="text-3xl font-black uppercase text-slate-800 mb-6">Un Seul Interlocuteur</h3>
+                    <p class="text-slate-600 leading-relaxed text-lg max-w-3xl mx-auto">
+                        Nous gérons l'intégralité du chantier : planning, coordination technique des corps de métier, logistique et contrôle qualité. Ce service est **inclus et gratuit** dans notre offre d'entreprise générale.
+                    </p>
                 </div>
 
-                <div class="bg-blue-900 p-12 rounded-[3.5rem] text-white flex flex-col md:flex-row items-center gap-10 shadow-2xl">
-                    <div class="w-32 h-32 bg-white/10 rounded-full flex items-center justify-center shrink-0 border border-white/20">
-                        <i class="fas fa-shield-alt text-5xl text-blue-400"></i>
+                <div class="grid md:grid-cols-4 gap-6">
+                    <div class="bg-white p-8 rounded-[3rem] shadow-sm border border-slate-50 flex flex-col items-center text-center">
+                        <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6 text-xl font-black italic">01</div>
+                        <h4 class="font-black uppercase text-sm mb-4">Diagnostic</h4>
                     </div>
-                    <div>
-                        <h3 class="text-2xl font-black uppercase mb-4">La Garantie Décennale</h3>
-                        <p class="text-blue-100/70 leading-relaxed mb-6">Aba Rénovation est couverte par une **Assurance Décennale** complète. Elle garantit la réparation des dommages affectant la solidité de l'ouvrage pendant 10 ans après la réception du chantier.</p>
-                        <div class="px-6 py-2 bg-blue-500 rounded-full inline-block font-black text-[10px] uppercase tracking-wider">Sécurité Garantie</div>
+                    <div class="bg-white p-8 rounded-[3rem] shadow-sm border border-slate-50 flex flex-col items-center text-center">
+                        <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6 text-xl font-black italic">02</div>
+                        <h4 class="font-black uppercase text-sm mb-4">Planning</h4>
+                    </div>
+                    <div class="bg-white p-8 rounded-[3rem] shadow-sm border border-slate-50 flex flex-col items-center text-center">
+                        <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6 text-xl font-black italic">03</div>
+                        <h4 class="font-black uppercase text-sm mb-4">Suivi</h4>
+                    </div>
+                    <div class="bg-white p-8 rounded-[3rem] shadow-sm border border-slate-50 flex flex-col items-center text-center">
+                        <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6 text-xl font-black italic">04</div>
+                        <h4 class="font-black uppercase text-sm mb-4">Livraison</h4>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 3. PAGE EXPERTISES -->
+        <!-- 4. PAGE RÉALISATIONS -->
+        <div id="realisations" class="page-section">
+            <div class="back-btn-ui" onclick="navigateTo('home')"><i class="fas fa-arrow-left"></i> Dashboard</div>
+            <header class="page-header bg-slate-800">
+                <h2 class="text-6xl font-black uppercase tracking-tighter">Réalisations</h2>
+            </header>
+            <div class="masonry">
+                <div class="masonry-item" style="grid-row: span 2;">
+                    <img src="https://i.ibb.co/bgsqsTCX/Salle-de-bain.png" alt="SDB">
+                    <div class="masonry-overlay"><h4 class="text-white font-black uppercase">Salle de Bain Design</h4></div>
+                </div>
+                <div class="masonry-item">
+                    <img src="https://i.ibb.co/DfRqxqJt/20230522-095959.jpg" alt="Ext">
+                    <div class="masonry-overlay"><h4 class="text-white font-black uppercase">Extension</h4></div>
+                </div>
+                <div class="masonry-item" style="grid-row: span 2;">
+                    <img src="https://i.ibb.co/B5SDPJ2y/IMG-4289.jpg" alt="Wood">
+                    <div class="masonry-overlay"><h4 class="text-white font-black uppercase">Structure & Charpente</h4></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. PAGE EXPERTISES -->
         <div id="services" class="page-section">
+            <div class="back-btn-ui" onclick="navigateTo('home')"><i class="fas fa-arrow-left"></i> Dashboard</div>
             <header class="page-header bg-blue-900">
-                <div class="back-btn-header" onclick="navigateTo('home')"><i class="fas fa-arrow-left mr-2"></i> Retour</div>
                 <h2 class="text-5xl font-black uppercase text-white">Nos Métiers</h2>
             </header>
-            <div class="px-6 max-w-5xl mx-auto space-y-8 pb-20">
-                <div class="content-card group hover:border-blue-600 transition-all"><div class="flex items-center gap-6 mb-6"><div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-2xl text-blue-600"><i class="fas fa-trowel-bricks"></i></div><h3 class="text-2xl font-black uppercase text-slate-800">Maçonnerie & Gros Œuvre</h3></div><p class="text-slate-600 text-sm leading-relaxed">Murs porteurs, IPN, dalles béton, fondations.</p></div>
-                <div class="content-card group hover:border-blue-600 transition-all"><div class="flex items-center gap-6 mb-6"><div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-2xl text-blue-600"><i class="fas fa-bolt"></i></div><h3 class="text-2xl font-black uppercase text-slate-800">Électricité</h3></div><p class="text-slate-600 text-sm leading-relaxed">Remise aux normes, réseaux neufs.</p></div>
-                <div class="content-card group hover:border-blue-600 transition-all"><div class="flex items-center gap-6 mb-6"><div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-2xl text-blue-600"><i class="fas fa-layer-group"></i></div><h3 class="text-2xl font-black uppercase text-slate-800">Isolation & Placo</h3></div><p class="text-slate-600 text-sm leading-relaxed">Aménagement de combles, doublage ITI.</p></div>
-                <div class="content-card group hover:border-blue-600 transition-all"><div class="flex items-center gap-6 mb-6"><div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-2xl text-blue-600"><i class="fas fa-faucet"></i></div><h3 class="text-2xl font-black uppercase text-slate-800">Plomberie</h3></div><p class="text-slate-600 text-sm leading-relaxed">Sanitaires, pose de chauffe-eau.</p></div>
-                <div class="content-card group hover:border-blue-600 transition-all"><div class="flex items-center gap-6 mb-6"><div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-2xl text-blue-600"><i class="fas fa-door-open"></i></div><h3 class="text-2xl font-black uppercase text-slate-800">Menuiserie</h3></div><p class="text-slate-600 text-sm leading-relaxed">Ouvertures, parquets, terrasses bois.</p></div>
-                <div class="content-card group hover:border-blue-600 transition-all"><div class="flex items-center gap-6 mb-6"><div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-2xl text-blue-600"><i class="fas fa-paint-roller"></i></div><h3 class="text-2xl font-black uppercase text-slate-800">Finitions & Peinture</h3></div><p class="text-slate-600 text-sm leading-relaxed">Peintures haut de gamme, carrelage.</p></div>
+            <div class="px-6 max-w-5xl mx-auto space-y-8 pb-20 mt-10">
+                <div class="content-card group hover:border-blue-600 transition-all"><div class="flex items-center gap-6 mb-6"><div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-2xl text-blue-600"><i class="fas fa-trowel-bricks"></i></div><h3 class="text-2xl font-black uppercase text-slate-800">Maçonnerie & Gros Œuvre</h3></div><p class="text-slate-600 text-sm leading-relaxed mb-6">Ouvertures de murs porteurs (IPN), dalles béton, fondations et extensions traditionnelles.</p></div>
+                <div class="content-card group hover:border-blue-600 transition-all"><div class="flex items-center gap-6 mb-6"><div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-2xl text-blue-600"><i class="fas fa-bolt"></i></div><h3 class="text-2xl font-black uppercase text-slate-800">Électricité</h3></div><p class="text-slate-600 text-sm leading-relaxed mb-6">Mise aux normes complète NF C 15-100, réseaux neufs et éclairage architectural.</p></div>
+                <div class="content-card group hover:border-blue-600 transition-all"><div class="flex items-center gap-6 mb-6"><div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-2xl text-blue-600"><i class="fas fa-layer-group"></i></div><h3 class="text-2xl font-black uppercase text-slate-800">Isolation & Placo</h3></div><p class="text-slate-600 text-sm leading-relaxed mb-6">ITI, aménagement de combles, création de cloisons sèches et faux-plafonds.</p></div>
+                <div class="content-card group hover:border-blue-600 transition-all"><div class="flex items-center gap-6 mb-6"><div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-2xl text-blue-600"><i class="fas fa-faucet"></i></div><h3 class="text-2xl font-black uppercase text-slate-800">Plomberie</h3></div><p class="text-slate-600 text-sm leading-relaxed mb-6">Création de salles de bain, réseaux eau, pose de sanitaires et chauffe-eau.</p></div>
+                <div class="content-card group hover:border-blue-600 transition-all"><div class="flex items-center gap-6 mb-6"><div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-2xl text-blue-600"><i class="fas fa-door-open"></i></div><h3 class="text-2xl font-black uppercase text-slate-800">Menuiserie</h3></div><p class="text-slate-600 text-sm leading-relaxed mb-6">Fenêtres Alu/PVC, portes d'entrée, volets, parquets et terrasses bois.</p></div>
+                <div class="content-card group hover:border-blue-600 transition-all"><div class="flex items-center gap-6 mb-6"><div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-2xl text-blue-600"><i class="fas fa-paint-roller"></i></div><h3 class="text-2xl font-black uppercase text-slate-800">Finitions & Peinture</h3></div><p class="text-slate-600 text-sm leading-relaxed mb-6">Peintures haut de gamme, pose de carrelage, faïence et habillage.</p></div>
             </div>
         </div>
 
-        <!-- 4. PAGE CONTACT (DOUBLE EXPÉRIENCE) -->
+        <!-- 6. PAGE CONTACT (FORMULAIRE AMÉLIORÉ) -->
         <div id="contact" class="page-section" style="background-color: var(--deep-dark);">
+            <div class="back-btn-ui" onclick="navigateTo('home')"><i class="fas fa-arrow-left"></i> Dashboard</div>
             <header class="page-header">
-                <div class="back-btn-header" onclick="navigateTo('home')"><i class="fas fa-arrow-left mr-2"></i> Retour</div>
                 <h2 class="text-5xl font-black uppercase text-white tracking-tighter">Votre <span class="text-blue-500">Projet</span></h2>
             </header>
             
             <div class="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-10 pb-20">
                 <div class="space-y-10">
                     <div class="classic-form">
-                        <h3 class="text-2xl font-black uppercase mb-6 text-slate-800">Formulaire</h3>
-                        <div class="grid grid-cols-2 gap-4">
-                            <input type="text" placeholder="Nom" class="form-input">
-                            <input type="text" placeholder="Prénom" class="form-input">
+                        <h3 class="text-2xl font-black uppercase mb-8 text-slate-800">Décrivez-nous tout</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="form-group">
+                                <i class="fas fa-user"></i>
+                                <input type="text" placeholder="Votre Nom" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <i class="fas fa-signature"></i>
+                                <input type="text" placeholder="Prénom" class="form-input">
+                            </div>
                         </div>
-                        <input type="email" placeholder="Email" class="form-input">
-                        <input type="tel" placeholder="Téléphone" class="form-input">
-                        <textarea placeholder="Message..." rows="4" class="form-input"></textarea>
-                        <button class="w-full bg-blue-600 text-white font-black uppercase py-4 rounded-full tracking-widest text-xs hover:bg-blue-700 transition-all">Envoyer</button>
+                        <div class="form-group">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" placeholder="Adresse Email" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <i class="fas fa-phone-alt"></i>
+                            <input type="tel" placeholder="Numéro de Téléphone" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <i class="fas fa-comment-dots"></i>
+                            <textarea placeholder="Parlez-nous de votre projet (lieu, surface, type de travaux...)" rows="5" class="form-input h-auto pt-6"></textarea>
+                        </div>
+                        <button class="submit-btn-premium">
+                            Démarrer mon étude <i class="fas fa-paper-plane ml-2"></i>
+                        </button>
                     </div>
-                    <div class="px-10 py-8 bg-white/5 border border-white/10 rounded-[3rem] text-white">
-                        <h4 class="font-black uppercase text-[10px] text-blue-500 mb-6 tracking-widest">Coordonnées</h4>
-                        <div class="space-y-6">
-                            <div class="flex items-center gap-4"><i class="fas fa-phone-alt text-blue-500"></i> <span class="font-bold">07 88 32 63 82</span></div>
-                            <div class="flex items-center gap-4"><i class="fas fa-envelope text-blue-500"></i> <span class="font-bold">abarenovation44@gmail.com</span></div>
+
+                    <div class="px-12 py-10 bg-white/5 border border-white/10 rounded-[4rem] text-white">
+                        <h4 class="font-black uppercase text-[11px] text-blue-500 mb-8 tracking-[5px]">Nous joindre</h4>
+                        <div class="space-y-8">
+                            <div class="flex items-center gap-6"><div class="w-12 h-12 bg-blue-600/20 rounded-2xl flex items-center justify-center text-blue-500"><i class="fas fa-phone"></i></div><span class="font-black text-lg">07 88 32 63 82</span></div>
+                            <div class="flex items-center gap-6"><div class="w-12 h-12 bg-blue-600/20 rounded-2xl flex items-center justify-center text-blue-500"><i class="fas fa-envelope"></i></div><span class="font-bold text-slate-300">abarenovation44@gmail.com</span></div>
                         </div>
                     </div>
                 </div>
+                <!-- ASSISTANT IA -->
                 <div class="immersive-ui">
-                    <div class="immersive-header">
-                        <div class="flex items-center gap-4"><i class="fas fa-robot text-blue-500"></i><span class="font-black uppercase text-xs text-white text-xs">Assistant Virtuel</span></div>
-                        <div class="status-badge"><span class="status-dot"></span>Artisans connectés</div>
-                    </div>
+                    <div class="immersive-header"><div class="status-badge"><span class="status-dot"></span>Assistant Virtuel</div></div>
                     <div class="immersive-messages" id="contact-chat-box"></div>
                     <div class="ui-options-grid" id="contact-input-area"></div>
                 </div>
             </div>
         </div>
 
-        <!-- AUTRES PAGES -->
-        <div id="maitrise" class="page-section"><header class="page-header bg-slate-900"><div class="back-btn-header" onclick="navigateTo('home')"><i class="fas fa-arrow-left mr-2"></i> Retour</div><h2 class="text-5xl font-black uppercase tracking-tighter">Maîtrise d'œuvre</h2></header><div class="px-6 max-w-4xl mx-auto"><div class="content-card text-center"><p class="text-xl text-slate-700 font-medium leading-relaxed mb-8">Un seul interlocuteur pour tout votre chantier.</p><p class="text-slate-500 text-sm">Gestion technique et pilotage inclus.</p></div></div></div>
-        <div id="realisations" class="page-section"><header class="page-header bg-slate-800"><div class="back-btn-header" onclick="navigateTo('home')"><i class="fas fa-arrow-left mr-2"></i> Retour</div><h2 class="text-5xl font-black uppercase text-white tracking-tighter">Réalisations</h2></header><div class="masonry"><div class="masonry-item"><img src="https://i.ibb.co/bgsqsTCX/Salle-de-bain.png"></div><div class="masonry-item"><img src="https://i.ibb.co/DfRqxqJt/20230522-095959.jpg"></div><div class="masonry-item"><img src="https://i.ibb.co/B5SDPJ2y/IMG-4289.jpg"></div></div></div>
-        <div id="depannage" class="page-section" style="background-color: var(--emergency-dark);"><header class="page-header"><div class="back-btn-header" onclick="navigateTo('home')"><i class="fas fa-arrow-left mr-2"></i> Retour</div><h2 class="text-5xl font-black uppercase text-white tracking-tighter">Diagnostic <span class="text-amber-500">SOS</span></h2></header><div class="max-w-4xl mx-auto px-6"><div class="immersive-ui" style="border-color: rgba(245, 158, 11, 0.2);"><div class="immersive-messages" id="dep-chat-box"></div><div class="ui-options-grid" id="dep-input-area"></div></div></div></div>
-        <div id="avis" class="page-section"><header class="page-header bg-white"><div class="back-btn-header !text-slate-800 !bg-slate-100" onclick="navigateTo('home')"><i class="fas fa-arrow-left mr-2"></i> Retour</div><h2 class="text-5xl font-black uppercase text-slate-800 tracking-tighter">Avis</h2></header></div>
+        <!-- 7. PAGE DÉPANNAGE -->
+        <div id="depannage" class="page-section" style="background-color: var(--emergency-dark);">
+            <div class="back-btn-ui" onclick="navigateTo('home')"><i class="fas fa-arrow-left"></i> Dashboard</div>
+            <header class="page-header"><h2 class="text-5xl font-black uppercase text-white tracking-tighter">Diagnostic <span class="text-amber-500">SOS</span></h2></header>
+            <div class="max-w-4xl mx-auto px-6">
+                <div class="immersive-ui" style="border-color: rgba(245, 158, 11, 0.2);">
+                    <div class="immersive-messages" id="dep-chat-box"></div>
+                    <div class="ui-options-grid" id="dep-input-area"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 8. PAGE AVIS -->
+        <div id="avis" class="page-section">
+            <div class="back-btn-ui" onclick="navigateTo('home')"><i class="fas fa-arrow-left"></i> Dashboard</div>
+            <header class="page-header bg-white"><h2 class="text-5xl font-black uppercase text-slate-800 tracking-tighter">Avis</h2></header>
+            <div class="p-10 max-w-4xl mx-auto space-y-6">
+                <div class="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm"><p class="italic text-slate-600 text-lg">"Enfin une entreprise générale qui coordonne tout avec sérieux sur Herbignac. Gain de temps précieux."</p><p class="mt-4 font-bold text-slate-800 text-right uppercase text-xs">David R.</p></div>
+            </div>
+        </div>
 
     </main>
 
     <script>
-        const FORMSPREE_ID = 'mnnewbqj'; 
-
         document.addEventListener('DOMContentLoaded', () => {
             const splash = document.getElementById('splash-screen');
             const friezeProgress = document.getElementById('frieze-progress');
@@ -471,7 +550,6 @@
             const interval = setInterval(() => { const items = document.querySelectorAll('.frieze-item'); let currentStep = document.querySelectorAll('.frieze-item.active').length; if (currentStep < items.length) { items[currentStep].classList.add('active'); } else { clearInterval(interval); setTimeout(() => { splash.classList.add('finished'); mainContent.classList.add('revealed'); setTimeout(() => splash.style.display = 'none', 800); }, 500); } }, 250);
         });
 
-        // NAVIGATION
         function navigateTo(id) {
             document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active'));
             const target = document.getElementById(id); if(target) target.classList.add('active');
@@ -483,7 +561,6 @@
             if(id === 'depannage' && chatSteps.dep === 0) runDepannageStep();
         }
 
-        // CHAT ENGINE
         let chatSteps = { contact: 0, dep: 0 };
         let userData = { contact: {}, dep: {} };
 
@@ -502,29 +579,16 @@
             });
         }
 
-        function showTextInput(areaId, placeholder, context) {
-            const area = document.getElementById(areaId); if(!area) return;
-            area.innerHTML = `<div class="flex gap-4 w-full p-4"><input type="text" id="${context}-input" placeholder="${placeholder}" class="ui-input-field"><button onclick="submitText('${context}')" class="bg-blue-600 text-white px-8 py-4 rounded-full font-black text-xs">OK</button></div>`;
-            setTimeout(() => document.getElementById(`${context}-input`).focus(), 100);
-        }
-
-        function submitText(context) { const input = document.getElementById(`${context}-input`); if(input && input.value) handleResponse(context, input.value); }
-
         async function runContactStep() {
             const box = 'contact-chat-box'; const area = 'contact-input-area';
-            if(chatSteps.contact === 0) { await botSpeak(box, "👋 Bonjour ! Prêt à transformer votre habitat ?"); await botSpeak(box, "Quel est le type de projet ?"); showOptions(area, ["Rénovation", "Extension", "Cuisine/SDB", "Construction"], 'contact'); }
-            else if(chatSteps.contact === 1) { await botSpeak(box, "Surface concernée (m²) ?"); showOptions(area, ["< 30", "30-80", "80-150", "> 150"], 'contact'); }
-            else if(chatSteps.contact === 2) { await botSpeak(box, "Sur quelle commune ?"); showTextInput(area, "Herbignac, Guérande...", 'contact'); }
-            else if(chatSteps.contact === 3) { await botSpeak(box, "Comment vous recontacter ?"); showTextInput(area, "Email ou Tel...", 'contact'); }
-            else if(chatSteps.contact === 4) { await botSpeak(box, "Dossier transmis ✅"); }
+            if(chatSteps.contact === 0) { await botSpeak(box, "👋 Bonjour ! Prêt à rénover votre habitat ?"); showOptions(area, ["Rénovation", "Extension", "Cuisine / SDB", "Neuf"], 'contact'); }
+            else if(chatSteps.contact === 1) { await botSpeak(box, "C'est noté ! Notre expert vous rappellera sous 24h."); }
         }
 
         async function runDepannageStep() {
             const box = 'dep-chat-box'; const area = 'dep-input-area';
-            if(chatSteps.dep === 0) { await botSpeak(box, "🚨 ABA SOS. Précisez la panne."); showOptions(area, ["💧 Fuite", "⚡ Panne", "🏠 Toiture", "🛠️ Autre"], 'dep'); }
-            else if(chatSteps.dep === 1) { await botSpeak(box, "Où devons-nous intervenir ?"); showTextInput(area, "Votre ville...", 'dep'); }
-            else if(chatSteps.dep === 2) { await botSpeak(box, "Votre numéro ?"); showTextInput(area, "06...", 'dep'); }
-            else if(chatSteps.dep === 3) { await botSpeak(box, "⚠️ ALERTE ENVOYÉE 🆘"); }
+            if(chatSteps.dep === 0) { await botSpeak(box, "🚨 ABA SOS. Précisez votre panne."); showOptions(area, ["💧 Fuite", "⚡ Panne élec", "🏠 Toiture"], 'dep'); }
+            else if(chatSteps.dep === 1) { await botSpeak(box, "⚠️ ALERTE ENVOYÉE 🆘"); }
         }
 
         async function handleResponse(context, res) { 
