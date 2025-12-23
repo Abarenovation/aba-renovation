@@ -26,6 +26,7 @@
             background-color: var(--corp-bg);
             overflow-x: hidden;
             color: #334155;
+            -webkit-tap-highlight-color: transparent;
         }
 
         h1, h2, h3, .impact-text { font-family: 'Montserrat', sans-serif; }
@@ -52,14 +53,18 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
+        /* Style spécifique pour le splash screen */
         .splash-content .logo-box {
             background-color: white;
             color: var(--corp-blue);
             font-size: 2rem;
             padding: 10px 20px;
         }
+        .splash-content .logo-text-part {
+            display: none; 
+        }
 
-        /* --- SPLASH SCREEN (SIMPLIFIÉ & ROBUSTE) --- */
+        /* --- SPLASH SCREEN --- */
         #splash-screen {
             position: fixed;
             inset: 0;
@@ -149,7 +154,6 @@
             margin-left: 88px; 
             transition: all 0.4s ease; 
             min-height: 100vh;
-            /* État initial */
             opacity: 0; 
             transform: scale(0.98);
             transition: opacity 1s ease, transform 1s ease;
@@ -162,7 +166,7 @@
         /* --- SIDEBAR --- */
         .sidebar {
             width: 88px; height: 100vh; position: fixed; left: 0; top: 0;
-            background: white; z-index: 50; display: flex; flex-direction: column; align-items: center;
+            background: white; z-index: 60; display: flex; flex-direction: column; align-items: center;
             border-right: 1px solid #e2e8f0; transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
             overflow: hidden; border-top-right-radius: 24px; border-bottom-right-radius: 24px;
         }
@@ -186,6 +190,17 @@
         
         .nav-text { display: none; margin-left: 16px; font-weight: 600; font-size: 0.95rem; white-space: nowrap; }
         .sidebar:hover .nav-text { display: block; animation: fadeIn 0.4s; }
+
+        /* Close button for mobile sidebar */
+        .mobile-close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            color: #64748b;
+            cursor: pointer;
+            display: none;
+        }
 
         /* --- BENTO GRID --- */
         .bento-container {
@@ -237,8 +252,15 @@
 
         /* MOBILE OVERRIDES */
         @media (max-width: 1023px) {
-            .sidebar { transform: translateX(-100%); width: 280px; border-radius: 0; }
+            .sidebar { 
+                transform: translateX(-100%); 
+                width: 280px; 
+                border-radius: 0; 
+                z-index: 100;
+                overflow-y: auto; 
+            }
             .sidebar.open { transform: translateX(0); }
+            .mobile-close-btn { display: block; } /* Afficher croix fermeture */
             .main-content { margin-left: 0; }
             .bento-container { height: auto; display: flex; flex-direction: column; padding-top: 80px; padding-bottom: 100px; }
             .box-hero, .box-maitrise, .box-wide, .box-expertises-list { height: auto; min-height: 320px; }
@@ -253,7 +275,6 @@
         .back-btn { display: inline-flex; align-items: center; gap: 10px; padding: 10px 24px; background: white; color: #64748b; border-radius: 9999px; font-weight: 600; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: all 0.3s; cursor: pointer; margin-bottom: 20px; }
         .back-btn:hover { color: var(--corp-blue); transform: translateX(-5px); }
         
-        /* CONTACT PANEL STYLES - RESTORED ORDER */
         .contact-split-container { display: flex; flex-direction: column; min-height: 100vh; }
         .contact-info-panel { width: 100%; background-color: #0f172a; color: white; padding: 4rem; display: flex; flex-direction: column; justify-content: center; }
         .contact-wizard-panel { width: 100%; background-color: white; padding: 4rem; display: flex; flex-direction: column; }
@@ -294,7 +315,6 @@
             gap: 16px;
             padding-bottom: 40px;
         }
-        /* Rendre certaines images plus grandes pour l'effet mosaïque */
         .masonry-item:nth-child(3n+1) {
             grid-row: span 2;
         }
@@ -304,7 +324,7 @@
             overflow: hidden;
             cursor: pointer;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            background-color: #e2e8f0; /* Couleur de fond si l'image charge mal */
+            background-color: #e2e8f0;
         }
         .masonry-img {
             width: 100%;
@@ -336,19 +356,18 @@
     <div id="splash-screen">
         <div class="splash-content">
             <div class="splash-logo-container">
-                <img src="logo aba renovation.png" alt="ABA Rénovation" class="splash-logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <!-- IMPORTANT : Si l'image locale échoue, on affiche le fallback. Si l'image unsplash échoue aussi, le fallback reste visible. -->
+                <img src="logo aba renovation.png" alt="ABA Rénovation" class="splash-logo-img" 
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                 <div class="logo-fallback" style="display:none">
                     <span class="logo-box">ABA</span>
                 </div>
             </div>
             
-            <!-- FRISE CHANTIER (Replacing Loading Bar) -->
             <div class="splash-frieze-container">
                 <div class="frieze-line-bg"></div>
                 <div class="frieze-line-progress" id="frieze-progress"></div>
-                <div class="frieze-items" id="frieze-items-container">
-                    <!-- Emojis injected by JS -->
-                </div>
+                <div class="frieze-items" id="frieze-items-container"></div>
             </div>
             
             <p class="splash-slogan">La rénovation en toute confiance</p>
@@ -365,8 +384,12 @@
 
     <!-- Sidebar -->
     <nav class="sidebar shadow-2xl">
+        <div class="mobile-close-btn lg:hidden" onclick="document.querySelector('.sidebar').classList.remove('open')">
+            <i class="fas fa-times"></i>
+        </div>
         <div class="sidebar-logo" onclick="navigateTo('home')">
-            <img src="logo aba renovation.png" alt="Logo" class="h-10 object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+            <img src="logo aba renovation.png" alt="Logo" class="h-10 object-contain" 
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
             <div class="logo-fallback" style="display:none">
                 <span class="logo-box">ABA</span>
                 <span class="logo-text-part">Rénovation</span>
@@ -435,7 +458,8 @@
                     
                     <!-- LOGO AJOUTÉ À CÔTÉ DU TITRE (Visible sur grands écrans) -->
                     <div class="absolute right-10 top-1/2 -translate-y-1/2 hidden lg:block opacity-90 transition-transform hover:scale-105 duration-500">
-                        <img src="logo aba renovation.png" alt="Logo ABA Rénovation" class="h-48 object-contain drop-shadow-2xl filter brightness-0 invert" onerror="this.style.display='none'"> 
+                        <img src="logo aba renovation.png" alt="Logo ABA Rénovation" class="h-48 object-contain drop-shadow-2xl filter brightness-0 invert" 
+                             onerror="this.style.display='none'"> 
                     </div>
 
                     <div class="bento-content !p-10 flex flex-col justify-between h-full relative z-10">
@@ -542,15 +566,15 @@
                     <div class="absolute inset-0 bg-gradient-to-br from-blue-600 to-indigo-900 opacity-0 group-hover:opacity-100 transition duration-500"></div>
                     
                     <div class="relative z-10 flex flex-col items-center justify-center text-center">
-                        <!-- Icône : Bleue sur fond clair par défaut -> Blanche sur fond bleu au survol -->
+                        <!-- Icône -->
                         <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-3 shadow-sm border border-blue-100 group-hover:bg-white/20 group-hover:text-white group-hover:border-white/10 group-hover:scale-110 transition duration-300 relative">
                             <i class="fas fa-paper-plane text-2xl"></i>
                         </div>
                         
-                        <!-- Titre : Gris foncé par défaut -> Blanc au survol -->
+                        <!-- Titre -->
                         <span class="font-black uppercase text-lg tracking-widest text-white group-hover:text-white group-hover:tracking-[0.1em] transition-all mb-1">Nous Contacter</span>
                         
-                        <!-- Badge : Subtil par défaut -> Lumineux au survol -->
+                        <!-- Badge -->
                         <div class="flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 group-hover:bg-white/10 group-hover:border-white/20 transition-colors">
                             <span class="text-[10px] font-bold uppercase text-blue-100 group-hover:text-blue-100">Lancer mon projet</span>
                         </div>
@@ -560,200 +584,196 @@
             </div>
         </div>
 
-        <!-- 2. SERVICES PAGE -->
-        <div id="services" class="page-section">
-            <header class="h-72 bg-slate-800 rounded-b-[40px] flex flex-col items-center justify-center text-white relative overflow-hidden mb-12 shadow-2xl">
-                 <div class="container mx-auto px-8 relative z-10">
-                    <div onclick="navigateTo('home')" class="back-btn absolute top-[-40px] left-8 lg:left-0 text-slate-900">
+        <!-- 6. CONTACT PAGE -->
+        <div id="contact" class="page-section">
+             <div class="contact-split-container">
+                 
+                 <!-- LEFT SIDE: HUMAN INFO -->
+                 <div class="contact-info-panel">
+                     <div onclick="navigateTo('home')" class="back-btn absolute top-8 left-8 text-white bg-white/10 hover:bg-white/20 border-0">
                         <i class="fas fa-arrow-left"></i> Retour
                     </div>
-                    <div class="text-center mt-8">
-                        <h2 class="text-4xl lg:text-5xl font-black uppercase mb-2">Expertises</h2>
-                        <p class="text-gray-400 font-bold uppercase tracking-widest text-sm">Intervention Tous Corps d'État</p>
-                    </div>
-                </div>
-            </header>
-            
-            <div class="container mx-auto px-8 pb-16 max-w-7xl">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     
-                    <!-- Service 1: Gros Oeuvre -->
-                    <div class="service-card-pro group">
-                        <div class="service-bg" style="background-image: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                        <div class="service-overlay"></div>
-                        <div class="service-content">
-                            <div class="service-icon-box">
-                                <i class="fas fa-trowel-bricks"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold uppercase">Gros Œuvre</h3>
-                            <div class="service-detail">
-                                <ul class="list-disc list-inside space-y-1">
-                                    <li>Maçonnerie générale</li>
-                                    <li>Ouverture murs porteurs (IPN)</li>
-                                    <li>Dalles béton & Fondations</li>
-                                    <li>Extensions</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Service 2: Plâtrerie -->
-                    <div class="service-card-pro group">
-                        <div class="service-bg" style="background-image: url('https://images.unsplash.com/photo-1595846519845-68e298c2edd8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                        <div class="service-overlay"></div>
-                        <div class="service-content">
-                            <div class="service-icon-box">
-                                <i class="fas fa-layer-group"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold uppercase">Plâtrerie & Isolation</h3>
-                            <div class="service-detail">
-                                <ul class="list-disc list-inside space-y-1">
-                                    <li>Cloisons sèches & Distribution</li>
-                                    <li>Faux-plafonds suspendus</li>
-                                    <li>Isolation thermique (ITI)</li>
-                                    <li>Doublage & Phonique</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Service 3: Menuiserie -->
-                    <div class="service-card-pro group">
-                        <div class="service-bg" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                        <div class="service-overlay"></div>
-                        <div class="service-content">
-                            <div class="service-icon-box">
-                                <i class="fas fa-door-open"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold uppercase">Menuiserie</h3>
-                            <div class="service-detail">
-                                <ul class="list-disc list-inside space-y-1">
-                                    <li>Fenêtres Alu / PVC / Bois</li>
-                                    <li>Portes & Baies vitrées</li>
-                                    <li>Agencement intérieur</li>
-                                    <li>Verrières atelier</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Service 4: Electricité -->
-                    <div class="service-card-pro group">
-                        <div class="service-bg" style="background-image: url('https://images.unsplash.com/photo-1555963966-b7ae5404b6ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                        <div class="service-overlay"></div>
-                        <div class="service-content">
-                            <div class="service-icon-box">
-                                <i class="fas fa-bolt"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold uppercase">Électricité</h3>
-                            <div class="service-detail">
-                                <ul class="list-disc list-inside space-y-1">
-                                    <li>Tableaux électriques (NF C 15-100)</li>
-                                    <li>Éclairage technique LED</li>
-                                    <li>Domotique & Réseaux</li>
-                                    <li>VMC</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Service 5: Plomberie -->
-                    <div class="service-card-pro group">
-                        <div class="service-bg" style="background-image: url('https://images.unsplash.com/photo-1584622050111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                        <div class="service-overlay"></div>
-                        <div class="service-content">
-                            <div class="service-icon-box">
-                                <i class="fas fa-faucet"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold uppercase">Plomberie / CVC</h3>
-                            <div class="service-detail">
-                                <ul class="list-disc list-inside space-y-1">
-                                    <li>Création Salle de Bain</li>
-                                    <li>Réseaux & Sanitaires</li>
-                                    <li>Chauffe-eau thermodynamique</li>
-                                    <li>Chauffage</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Service 6: Finitions -->
-                    <div class="service-card-pro group">
-                        <div class="service-bg" style="background-image: url('https://images.unsplash.com/photo-1598928506311-c55ded91a20c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                        <div class="service-overlay"></div>
-                        <div class="service-content">
-                            <div class="service-icon-box">
-                                <i class="fas fa-paint-roller"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold uppercase">Finitions</h3>
-                            <div class="service-detail">
-                                <ul class="list-disc list-inside space-y-1">
-                                    <li>Peinture (Airless / Rouleau)</li>
-                                    <li>Carrelage grand format</li>
-                                    <li>Faïence décorative</li>
-                                    <li>Revêtements de sols</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <!-- 3. ENTREPRISE PAGE -->
-        <div id="entreprise" class="page-section">
-            <header class="h-72 bg-slate-900 rounded-b-[40px] flex flex-col items-center justify-center text-white relative overflow-hidden mb-12 shadow-2xl">
-                <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
-                <div class="container mx-auto px-8 relative z-10">
-                    <div onclick="navigateTo('home')" class="back-btn absolute top-[-40px] left-8 lg:left-0 opacity-80 hover:opacity-100">
-                        <i class="fas fa-arrow-left"></i> Retour
-                    </div>
-                    <div class="text-center mt-8">
-                        <h2 class="text-4xl lg:text-5xl font-black uppercase mb-2">L'Entreprise</h2>
-                        <div class="w-24 h-1.5 bg-blue-500 rounded-full mx-auto"></div>
-                    </div>
-                </div>
-            </header>
-            
-            <div class="container mx-auto px-8 pb-16 max-w-5xl">
-                <div class="flex flex-col lg:flex-row gap-12">
-                    <div class="lg:w-1/2">
-                        <h3 class="text-3xl font-bold text-slate-800 mb-6 font-montserrat">QUI SOMMES-NOUS ?</h3>
-                        <p class="text-slate-600 mb-6 text-lg leading-relaxed">
-                            <strong>ABA RÉNOVATION</strong> est une <strong>entreprise générale de bâtiment</strong> située à Herbignac (44410). Nous sommes spécialisés dans tous types de travaux, de la rénovation à l'agrandissement.
+                    <div class="mb-12 mt-16 lg:mt-0">
+                        <span class="text-blue-400 font-bold uppercase tracking-widest text-sm">L'Humain avant tout</span>
+                        <h2 class="text-4xl lg:text-5xl font-black mt-4 mb-6 uppercase text-white">Votre Projet<br>Notre Engagement</h2>
+                        <p class="text-gray-400 text-lg leading-relaxed">
+                            Derrière chaque chantier ABA, il y a des hommes et des femmes passionnés. Nous sommes disponibles pour échanger sur vos besoins.
                         </p>
-                        <p class="text-slate-600 mb-8 leading-relaxed">
-                            Notre philosophie est simple : <strong>un interlocuteur unique pour tous vos travaux</strong>. En internalisant les compétences (maçonnerie, plâtrerie, électricité...), nous maîtrisons votre chantier de A à Z sans les aléas de la sous-traitance multiple.
-                        </p>
-                        <div class="p-8 bg-white rounded-3xl shadow-lg border border-slate-100">
-                            <p class="italic text-slate-800 font-medium text-lg">"La qualité de l'artisanat, la force d'une entreprise générale."</p>
+                    </div>
+
+                    <div class="space-y-8">
+                        <div class="flex items-center gap-6">
+                            <div class="w-14 h-14 rounded-full bg-blue-600 flex items-center justify-center text-white text-xl shadow-lg shadow-blue-900/50">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-400 uppercase tracking-widest mb-1">Ligne Directe</p>
+                                <p class="text-2xl font-bold text-white">07 88 32 63 82</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center gap-6">
+                            <div class="w-14 h-14 rounded-full bg-slate-800 flex items-center justify-center text-blue-400 text-xl border border-slate-700">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-400 uppercase tracking-widest mb-1">Email</p>
+                                <p class="text-lg font-bold text-white">abarenovation44@gmail.com</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-6">
+                            <div class="w-14 h-14 rounded-full bg-slate-800 flex items-center justify-center text-blue-400 text-xl border border-slate-700">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-400 uppercase tracking-widest mb-1">Siège Social</p>
+                                <p class="text-lg font-bold text-white">103 Kerduche, 44410 Herbignac</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="lg:w-1/2 grid grid-cols-2 gap-4">
-                        <div class="bg-slate-800 text-white p-8 flex flex-col justify-center items-center text-center rounded-3xl shadow-xl">
-                            <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mb-4 text-blue-400">
-                                <i class="fas fa-map-marker-alt text-xl"></i>
-                            </div>
-                            <div class="font-bold text-lg">Herbignac</div>
-                            <div class="text-xs text-gray-400 uppercase mt-1">Siège Social</div>
-                        </div>
-                        <div class="bg-white p-8 flex flex-col justify-center items-center text-center rounded-3xl shadow-xl border border-slate-100">
-                            <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mb-4 text-blue-600">
-                                <i class="fas fa-user-tie text-xl"></i>
-                            </div>
-                            <div class="font-bold text-lg text-slate-800">1 Expert</div>
-                            <div class="text-xs text-gray-500 uppercase mt-1">Interlocuteur Unique</div>
-                        </div>
-                         <div class="bg-blue-600 p-8 flex flex-col justify-center items-center text-center rounded-3xl col-span-2 shadow-xl shadow-blue-200">
-                             <img src="logo aba renovation.png" class="h-16 opacity-100 filter brightness-0 invert" alt="Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-                             <div class="logo-fallback" style="display:none">
-                                <span class="logo-box" style="background:white; color:#2563eb;">ABA</span>
+                    
+                    <div class="mt-auto pt-12 opacity-50 text-xs text-gray-400">
+                        &copy; 2024 ABA Rénovation - Tous droits réservés.
+                    </div>
+                 </div>
+
+                 <!-- RIGHT SIDE: SMART ASSISTANT -->
+                 <div class="contact-wizard-panel">
+                     <div class="contact-tabs">
+                         <div class="contact-tab active" onclick="switchTab('wizard')">Configurer mon projet</div>
+                         <div class="contact-tab" onclick="switchTab('rdv')">Message Simple</div>
+                     </div>
+
+                     <!-- WIZARD CONTAINER -->
+                     <div id="tab-wizard" class="tab-content h-full flex flex-col">
+                         
+                         <!-- STEP 1: TYPE -->
+                         <div class="wizard-step active" id="step-1">
+                             <h3 class="text-2xl font-bold text-slate-800 mb-2">Quel est votre type de bien ?</h3>
+                             <p class="text-slate-500 mb-6">Sélectionnez la nature du bâtiment concerné.</p>
+                             <div class="wizard-options-grid">
+                                 <div class="wizard-option-card" onclick="selectOption('type', 'Maison', 1, 2)">
+                                     <div class="wizard-option-icon">🏠</div>
+                                     <div class="font-bold">Maison</div>
+                                 </div>
+                                 <div class="wizard-option-card" onclick="selectOption('type', 'Appartement', 1, 2)">
+                                     <div class="wizard-option-icon">🏢</div>
+                                     <div class="font-bold">Appartement</div>
+                                 </div>
+                                 <div class="wizard-option-card" onclick="selectOption('type', 'Local Pro', 1, 2)">
+                                     <div class="wizard-option-icon">🏬</div>
+                                     <div class="font-bold">Local Pro</div>
+                                 </div>
+                                 <div class="wizard-option-card" onclick="selectOption('type', 'Terrain / Autre', 1, 2)">
+                                     <div class="wizard-option-icon">🏗️</div>
+                                     <div class="font-bold">Terrain / Autre</div>
+                                 </div>
                              </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                         </div>
+
+                         <!-- STEP 2: PROJECT NATURE -->
+                         <div class="wizard-step" id="step-2">
+                             <h3 class="text-2xl font-bold text-slate-800 mb-2">Quelle est la nature des travaux ?</h3>
+                             <p class="text-slate-500 mb-6">Dites-nous en plus sur votre objectif.</p>
+                             <div class="wizard-options-grid">
+                                 <div class="wizard-option-card" onclick="selectOption('nature', 'Rénovation Complète', 2, 3)">
+                                     <div class="wizard-option-icon">🔨</div>
+                                     <div class="font-bold">Rénovation Complète</div>
+                                 </div>
+                                 <div class="wizard-option-card" onclick="selectOption('nature', 'Extension', 2, 3)">
+                                     <div class="wizard-option-icon">🧱</div>
+                                     <div class="font-bold">Extension / Agrandissement</div>
+                                 </div>
+                                 <div class="wizard-option-card" onclick="selectOption('nature', 'Pièce Spécifique', 2, 3)">
+                                     <div class="wizard-option-icon">🚿</div>
+                                     <div class="font-bold">Pièce spécifique (Cuisine/SDB)</div>
+                                 </div>
+                                 <div class="wizard-option-card" onclick="selectOption('nature', 'Lot Technique', 2, 3)">
+                                     <div class="wizard-option-icon">⚡</div>
+                                     <div class="font-bold">Lot Technique (Élec/Plomb/Iso)</div>
+                                 </div>
+                             </div>
+                             <button onclick="prevStep(1)" class="mt-6 text-sm text-gray-400 hover:text-gray-600">Retour</button>
+                         </div>
+
+                         <!-- STEP 3: TIMING & DETAILS -->
+                         <div class="wizard-step" id="step-3">
+                             <h3 class="text-2xl font-bold text-slate-800 mb-2">Détails & Planning</h3>
+                             <div class="space-y-4 mt-6">
+                                 <div>
+                                     <label class="block text-sm font-bold text-slate-700 mb-2">Surface estimée (m²)</label>
+                                     <input type="number" id="wiz-surface" class="w-full bg-slate-50 p-3 rounded-xl border border-slate-200 outline-none focus:border-blue-500" placeholder="Ex: 80">
+                                 </div>
+                                 <div>
+                                     <label class="block text-sm font-bold text-slate-700 mb-2">Délai souhaité</label>
+                                     <select id="wiz-delai" class="w-full bg-slate-50 p-3 rounded-xl border border-slate-200 outline-none focus:border-blue-500">
+                                         <option value="Au plus vite">Au plus vite</option>
+                                         <option value="Dans les 3 mois">Dans les 3 mois</option>
+                                         <option value="Dans les 6 mois">Dans les 6 mois</option>
+                                         <option value="Année prochaine">Année prochaine</option>
+                                     </select>
+                                 </div>
+                             </div>
+                             <div class="flex gap-4 mt-8">
+                                 <button onclick="prevStep(2)" class="px-6 py-3 rounded-xl border border-slate-200 text-slate-500 font-bold">Retour</button>
+                                 <button onclick="nextStep(4)" class="flex-1 btn-round bg-blue-600 text-white hover:bg-blue-800">Continuer</button>
+                             </div>
+                         </div>
+
+                         <!-- STEP 4: CONTACT INFO -->
+                         <div class="wizard-step" id="step-4">
+                             <h3 class="text-2xl font-bold text-slate-800 mb-2">Coordonnées</h3>
+                             <p class="text-slate-500 mb-6">Où pouvons-nous vous envoyer votre estimation ?</p>
+                             <div class="space-y-4">
+                                 <div class="grid grid-cols-2 gap-4">
+                                     <input type="text" id="wiz-nom" placeholder="Nom" class="w-full bg-slate-50 p-3 rounded-xl border border-slate-200 outline-none focus:border-blue-500">
+                                     <input type="text" id="wiz-prenom" placeholder="Prénom" class="w-full bg-slate-50 p-3 rounded-xl border border-slate-200 outline-none focus:border-blue-500">
+                                 </div>
+                                 <input type="email" id="wiz-email" placeholder="Email" class="w-full bg-slate-50 p-3 rounded-xl border border-slate-200 outline-none focus:border-blue-500">
+                                 <input type="tel" id="wiz-tel" placeholder="Téléphone" class="w-full bg-slate-50 p-3 rounded-xl border border-slate-200 outline-none focus:border-blue-500">
+                             </div>
+                             <button onclick="submitWizard()" class="w-full btn-round bg-green-600 text-white hover:bg-green-700 mt-8 shadow-lg shadow-green-200">
+                                 Envoyer ma demande
+                             </button>
+                         </div>
+
+                         <!-- LOADER (SIMPLE) -->
+                         <div class="loader-container" id="loader">
+                             <div class="loader-spinner"></div>
+                         </div>
+
+                         <!-- SUCCESS -->
+                         <div class="wizard-step text-center py-10" id="step-success">
+                             <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center text-green-600 text-4xl mx-auto mb-6">
+                                 <i class="fas fa-check"></i>
+                             </div>
+                             <h3 class="text-2xl font-bold text-slate-800 mb-2">Dossier Prêt !</h3>
+                             <p class="text-slate-500 mb-4">Veuillez vérifier votre application de messagerie et cliquer sur "Envoyer" pour confirmer la demande.</p>
+                             <button onclick="navigateTo('home')" class="mt-8 text-blue-600 font-bold underline">Retour au Dashboard</button>
+                         </div>
+
+                     </div>
+
+                     <!-- MESSAGE SIMPLE TAB CONTENT -->
+                     <div id="tab-rdv" class="tab-content hidden h-full">
+                         <h3 class="text-2xl font-bold text-slate-800 mb-6">Message Libre</h3>
+                         <p class="text-slate-500 mb-8">Vous préférez nous écrire directement ? C'est ici.</p>
+                         
+                         <form onsubmit="sendSimpleEmail(event)" class="space-y-4">
+                            <div class="grid grid-cols-2 gap-4">
+                                <input type="text" id="simple-nom" placeholder="Nom" class="w-full bg-slate-50 p-3 rounded-xl border border-slate-200 outline-none focus:border-blue-500" required>
+                                <input type="tel" id="simple-tel" placeholder="Téléphone" class="w-full bg-slate-50 p-3 rounded-xl border border-slate-200 outline-none focus:border-blue-500" required>
+                            </div>
+                            <input type="email" id="simple-email" placeholder="Email" class="w-full bg-slate-50 p-3 rounded-xl border border-slate-200 outline-none focus:border-blue-500" required>
+                            <textarea id="simple-msg" rows="6" placeholder="Bonjour, je souhaiterais..." class="w-full bg-slate-50 p-3 rounded-xl border border-slate-200 outline-none focus:border-blue-500" required></textarea>
+                            <button class="w-full btn-round bg-blue-600 text-white hover:bg-blue-800">Envoyer</button>
+                        </form>
+                     </div>
+                 </div>
+
+             </div>
         </div>
 
         <!-- 4. MAITRISE PAGE -->
@@ -998,50 +1018,6 @@
             </div>
         </div>
 
-        <!-- 6. CONTACT PAGE -->
-        <div id="contact" class="page-section bg-slate-900 text-white">
-             <div class="min-h-screen flex items-center justify-center py-20">
-                 <div class="container mx-auto px-8 max-w-5xl relative">
-                    <div onclick="navigateTo('home')" class="back-btn absolute top-[-60px] left-0 text-slate-900 hidden lg:flex">
-                        <i class="fas fa-arrow-left"></i> Retour
-                    </div>
-                    <div onclick="navigateTo('home')" class="back-btn absolute top-[-80px] left-0 text-slate-900 lg:hidden flex">
-                        <i class="fas fa-arrow-left"></i> Retour
-                    </div>
-
-                    <div class="grid md:grid-cols-2 gap-16 items-center">
-                        <div>
-                            <span class="text-blue-500 font-bold uppercase tracking-widest text-sm">Démarrer un projet</span>
-                            <h2 class="text-5xl font-black mt-4 mb-6 uppercase">CONTACTEZ<br>L'EXPERTISE.</h2>
-                            <p class="text-gray-400 text-lg mb-8 leading-relaxed">
-                                Prêt à transformer votre espace ? Échangeons sur les aspects techniques et budgétaires de votre projet.
-                            </p>
-                            <div class="space-y-6">
-                                <p class="flex items-center gap-6 text-lg"><span class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-blue-500"><i class="fas fa-phone"></i></span> <strong class="text-xl">07 88 32 63 82</strong></p>
-                                <p class="flex items-center gap-6 text-lg"><span class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-blue-500"><i class="fas fa-envelope"></i></span> abarenovation44@gmail.com</p>
-                                <p class="flex items-center gap-6 text-lg"><span class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-blue-500"><i class="fas fa-map-marker-alt"></i></span> 103 Kerduche, Herbignac</p>
-                            </div>
-                        </div>
-                        <div class="bg-white text-slate-900 p-8 rounded-3xl shadow-2xl">
-                             <h3 class="text-xl font-bold mb-6 border-b pb-4">Envoyez-nous votre demande</h3>
-                             <form onsubmit="event.preventDefault(); alert('Demande envoyée au bureau technique.');" class="space-y-4">
-                                <div class="grid grid-cols-2 gap-4">
-                                    <input type="text" placeholder="Votre Nom" class="w-full bg-slate-50 p-4 rounded-xl border border-slate-100 focus:border-blue-600 outline-none transition">
-                                    <input type="tel" placeholder="Téléphone" class="w-full bg-slate-50 p-4 rounded-xl border border-slate-100 focus:border-blue-600 outline-none transition">
-                                </div>
-                                <input type="email" placeholder="Email" class="w-full bg-slate-50 p-4 rounded-xl border border-slate-100 focus:border-blue-600 outline-none transition">
-                                <textarea rows="4" placeholder="Décrivez votre projet (rénovation, extension...)" class="w-full bg-slate-50 p-4 rounded-xl border border-slate-100 focus:border-blue-600 outline-none transition"></textarea>
-                                <button class="w-full btn-round bg-blue-600 text-white hover:bg-blue-800 shadow-lg">Envoyer ma demande</button>
-                            </form>
-                        </div>
-                    </div>
-                    <footer class="mt-20 text-center text-gray-600 text-sm">
-                        &copy; 2024 ABA Rénovation - Tous droits réservés.
-                    </footer>
-                 </div>
-             </div>
-        </div>
-
     </main>
 
     <script>
@@ -1163,3 +1139,7 @@
             
             // Close sidebar on mobile
             document.querySelector('.sidebar').classList.remove('open');
+        }
+    </script>
+</body>
+</html>
